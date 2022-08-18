@@ -37,6 +37,7 @@ function Login() {
             if (response.data.token) {
                 console.log(response.data.token)
                 localStorage.setItem('palstalkToken', response.data.token)
+                localStorage.setItem('palstalkUserId', response.data.id)
                 setCredentials({email:'', password:''})
                 toast.success('Logged in')
                 navigate('/')
@@ -116,7 +117,6 @@ function Login() {
                     <form className="box" onSubmit={register}>Sign up
                     <div className="field">
                         <div className='control'>
-
                         </div>
                     </div>
                                     <Form.Field kind='group'>
@@ -168,15 +168,7 @@ function Login() {
                                         <Form.Control>
                                         <button className={`button is-success ${regBtnState}`}>Create My Account</button>
                                         </Form.Control>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                                    
-                        
+
                     </form>
                 </div>
             <button onClick={toggleRegModal} className="modal-close is-large" aria-label="close"></button>
