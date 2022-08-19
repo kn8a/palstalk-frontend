@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react'
-
-import {Title, Subtitle, Content, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns} from 'bloomer'
+import {Title, Subtitle, Content, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose} from 'bloomer'
 import { Loader, Card, Media, Block, Button  } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
+import PostComments from './PostComments'
 
 function Post(props) {
     const userId = props.userId
     const token = props.token
     const [post, setPost] = useState(props.post)
     const [like, setLike] = useState()
+    const [commentsModal, setCommentsModal] = useState('')
     const postURL = `http://localhost:3000/api/posts/${post._id}`
     const likeURL = `http://localhost:3000/api/posts/${post._id}/like`
     const unlikeURL = `http://localhost:3000/api/posts/${post._id}/unlike`
@@ -23,7 +24,13 @@ function Post(props) {
             setLike(<a onClick={unlikeFn}>Unlike</a>)
         }
     },[])
-    
+
+    const updatePost = () => {
+        axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
+            .then((response) => {
+                setPost(response.data)
+            })
+    }
 
     const likeFn = () => {
         axios.put(likeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
@@ -32,10 +39,8 @@ function Post(props) {
             .then((response) => {
                 setPost(response.data)
                 setLike(<a onClick={unlikeFn}>Unlike</a>)
-
             })
             })
-
     }
 
     const unlikeFn = () => {
@@ -45,9 +50,17 @@ function Post(props) {
             .then((response) => {
                 setPost(response.data)
                 setLike(<a onClick={likeFn}>Like</a>)
+            })
+            })
+    }
 
-            })
-            })
+    const toggleCommentsModal = () => {
+        if (!commentsModal) {
+            setCommentsModal('is-active')
+        } else {
+            setCommentsModal(null)
+        }
+        
     }
 
 //setLike(<a onClick={likeFn}>Like</a>)
@@ -71,40 +84,36 @@ function Post(props) {
                         {post.content}
                         <br/>
                     </Content>
-                    
                     <Content >
-                    <Columns is-centered>
-                    <Column hasTextAlign='left'>
-                        <small>{post.likes.length} Likes</small>
-                        </Column>
-                        <Column hasTextAlign='right'>
-                        <small>{post.comments.length} Comments</small>
-                        </Column>
-                    </Columns>
-                        
-                        
+                        <Columns is-centered>
+                            <Column hasTextAlign='left'>
+                                <small>{post.likes.length} Likes</small>
+                            </Column>
+                            <Column hasTextAlign='right'>
+                                <small>{post.comments.length} Comments</small>
+                            </Column>
+                        </Columns>    
                     </Content>
-                    
-                    
                 </CardContent>
                 <CardFooter>
                     <CardFooterItem>
-                    
-                    
-                    {like}
-                    
-                    
+                        {like}
                     </CardFooterItem>
                     <CardFooterItem>
-                        Comment
+                        <a onClick={toggleCommentsModal}>Comments</a>
                     </CardFooterItem>
                 </CardFooter>
             </Card>
             </Block>
-
-
         </div>
+        <div className={`modal ${commentsModal}`}>
+            <div className="modal-background"></div>
+                <div className="modal-content">
+                    <PostComments postId={post._id} userId={userId} token={token} updatePost={updatePost}/>
+                </div>
+            <button onClick={toggleCommentsModal} className="modal-close is-large" aria-label="close"></button>
         
+        </div>
     </div>
   )
 }

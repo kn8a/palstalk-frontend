@@ -38,6 +38,9 @@ function Login() {
                 console.log(response.data.token)
                 localStorage.setItem('palstalkToken', response.data.token)
                 localStorage.setItem('palstalkUserId', response.data.id)
+                localStorage.setItem('palstalkUserPic', response.data.profile_pic)
+                const userName = response.data.name_first + ' ' + response.data.name_last
+                localStorage.setItem('palstalkUserName', userName)
                 setCredentials({email:'', password:''})
                 toast.success('Logged in')
                 navigate('/')
@@ -115,60 +118,50 @@ function Login() {
             <div className="modal-background"></div>
                 <div className="modal-content">
                     <form className="box" onSubmit={register}>Sign up
-                    <div className="field">
-                        <div className='control'>
-                        </div>
-                    </div>
-                                    <Form.Field kind='group'>
-                                        <Form.Control>
-                                            <input className="input" required onChange={onRegChange} value={registerInfo.name_first} name='name_first' type="text" placeholder="John"/>
-                                        </Form.Control>
-                                        <Form.Control>
-                                        <input className="input" required onChange={onRegChange} value={registerInfo.name_last} name='name_last' type="text" placeholder="Smith"/>
-                                        </Form.Control>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Form.Control>
-                                        <input className="input" required onChange={onRegChange} value={registerInfo.email} name='email' type="email" placeholder="example@email.com"/>
-                                        </Form.Control>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Form.Control>
-                                        <input className="input" required onChange={onRegChange} value={registerInfo.password} name='password' type="password" placeholder="*********"/>
-                                        </Form.Control>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Form.Control>
-                                        <input className="input" required onChange={onRegChange} value={registerInfo.confirm_password} name='confirm_password' type="password" placeholder="*********"/>
-                                        </Form.Control>
-                                    </Form.Field>
-                                    <Form.Field>
-                                        <Form.Control>
-                                        <div className='select'>
-                                        <select name='gender' required defaultValue={'default'} value={registerInfo.gender} placeholder='' onChange={onRegChange}>
-                                                <option value={"default"} disabled>Choose an option</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
-                                                <option value="Prefer not to say">Prefer not to say</option>
-                                        </select>
-                                    </div>
-                                        </Form.Control>
-                                    </Form.Field>
-                                    
-                                    
-                                    <Form.Field>
-                                        <Form.Control>
-                                            <input required type="checkbox"/>{` `}I agree to the <a href="#">terms and conditions</a>
-                                        </Form.Control>
-                                    </Form.Field>
-                                        <Form.Control>
-                                        <button className={`button is-success ${regBtnState}`}>Create My Account</button>
-                                        </Form.Control>
-
+                        <Form.Field kind='group'>
+                            <Form.Control>
+                                <input className="input" required onChange={onRegChange} value={registerInfo.name_first} name='name_first' type="text" placeholder="John"/>
+                            </Form.Control>
+                            <Form.Control>
+                                <input className="input" required onChange={onRegChange} value={registerInfo.name_last} name='name_last' type="text" placeholder="Smith"/>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Control>
+                                <input className="input" required onChange={onRegChange} value={registerInfo.email} name='email' type="email" placeholder="example@email.com"/>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Control>
+                                <input className="input" required onChange={onRegChange} value={registerInfo.password} name='password' type="password" placeholder="*********"/>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Control>
+                                <input className="input" required onChange={onRegChange} value={registerInfo.confirm_password} name='confirm_password' type="password" placeholder="*********"/>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Control>
+                                <div className='select'>
+                                    <select name='gender' required defaultValue={'default'} value={registerInfo.gender} placeholder='' onChange={onRegChange}>
+                                        <option value={"default"} disabled>Choose an option</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Field>
+                            <Form.Control>
+                                <input required type="checkbox"/>{` `}I agree to the <a href="#">terms and conditions</a>
+                            </Form.Control>
+                        </Form.Field>
+                        <Form.Control>
+                            <button className={`button is-success ${regBtnState}`}>Create My Account</button>
+                        </Form.Control>
                     </form>
                 </div>
             <button onClick={toggleRegModal} className="modal-close is-large" aria-label="close"></button>

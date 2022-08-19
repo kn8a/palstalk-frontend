@@ -47,9 +47,6 @@ function Board() {
         toast.success('Logged out successfully')
         navigate('/login')
     }
-    
-
-
 
     return (
         <div>
