@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle, Content, MediaLeft, Button, MediaContent, Field, Control, TextArea, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box, Input} from 'bloomer'
+import {Title, Subtitle, Content, MediaLeft, Button, Delete, MediaContent, Field, Control, TextArea, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box, Input} from 'bloomer'
 import { Loader, Card, Media, Block,  Form  } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
@@ -57,8 +57,9 @@ function PostComments (props) {
     }
 
   return (
-    <div>   
+    <div> 
         <Box>
+            
                 <Card>
                     <CardContent>
                     <Media>

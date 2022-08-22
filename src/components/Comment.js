@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle, Content, Button, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box} from 'bloomer'
+import {Title, Subtitle, Content, Button, MediaLeft, MediaContent, Image, Delete, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box} from 'bloomer'
 import { Loader, Card, Media, Block,   } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
@@ -60,6 +60,7 @@ function Comment(props) {
   return (
     <div>
             <Card>
+                
                 <CardContent>
                     <Media>
                         <MediaLeft>

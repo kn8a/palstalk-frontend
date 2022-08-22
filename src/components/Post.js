@@ -48,7 +48,7 @@ function Post(props) {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setPost(response.data)
-                setLike(<a onClick={unlikeFn}><FaThumbsDown/></a>)
+                setLike(<a onClick={unlikeFn}><FaThumbsDown/> Unlike</a>)
             })
         })
     }
@@ -60,7 +60,7 @@ function Post(props) {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setPost(response.data)
-                setLike(<a onClick={likeFn}>Like</a>)
+                setLike(<a onClick={likeFn}><FaThumbsUp/> Like</a>)
             })
         })
     }
@@ -116,7 +116,7 @@ function Post(props) {
             </Block>
         </div>
         <div className={`modal ${commentsModal}`}>
-            <div className="modal-background"></div>
+            <div className="modal-background" onClick={toggleCommentsModal}></div>
                 <div className="modal-content">
                     <PostComments postId={post._id} userId={userId} token={token} updatePost={updatePost}/>
                 </div>
