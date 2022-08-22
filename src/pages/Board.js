@@ -19,7 +19,7 @@ function Board() {
     useEffect(() => {
         const token = localStorage.getItem('palstalkToken')
         const userId = localStorage.getItem('palstalkUserId')
-        console.log(userId)
+        //console.log(userId)
         setUserId(userId)
 
         if (!token) {
@@ -37,6 +37,12 @@ function Board() {
         }
     },[])
 
+    const updatePosts = () => {
+        axios.get(postsURL, {headers: {"Authorization": `Bearer ${token}`}})
+            .then((response) => {
+                setPosts(response.data)
+            })
+    }
 
     const token = localStorage.getItem('palstalkToken')
     if (!token) {
@@ -54,7 +60,7 @@ function Board() {
             Board
             <Nav/>
             <button onClick={logout}>logout</button>
-            <Posts posts={posts} userId={userId} token={token}/>
+            <Posts posts={posts} userId={userId} token={token} updatePosts={updatePosts}/>
         </div>
     )
 }

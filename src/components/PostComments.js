@@ -15,7 +15,7 @@ function PostComments (props) {
     const postId = props.postId
     const profilePic = localStorage.getItem('palstalkUserPic')
     const profileName = localStorage.getItem('palstalkUserName')
-    console.log(profilePic)
+    //console.log(profilePic)
     const [comments, setComments] = useState([])
     const commentsURL = `http://localhost:3000/api/posts/${postId}/comments`
     const [newComment, setNewComment] = useState('')
@@ -87,7 +87,7 @@ function PostComments (props) {
                 </Card> 
         {comments.map((comment)=>{
             return(
-                <Comment comment={comment} token={token} postId={postId} userId={userId}/>
+                <Comment key={comment._id} comment={comment} token={token} postId={postId} userId={userId}/>
             ) 
         })}
         </Box>

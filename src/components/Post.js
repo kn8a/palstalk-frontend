@@ -94,7 +94,7 @@ function Post(props) {
                         <br/>
                     </Content>
                     <Content >
-                        <Columns is-centered>
+                        <Columns is-centered="true">
                             <Column hasTextAlign='left'>
                                 <small>{post.likes.length} Likes</small>
                             </Column>
