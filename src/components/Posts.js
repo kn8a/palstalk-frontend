@@ -8,7 +8,7 @@ import Post from './Post'
 
 function Posts(props) {
     const token = props.token
-    console.log(props.userId, props.token)
+    //console.log(props.userId, props.token)
     if (!props.posts) {
         return(<Loader/>)
     }

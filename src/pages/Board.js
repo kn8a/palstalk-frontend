@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import Posts from '../components/Posts'
+import Nav from '../components/Nav'
 
 
 function Board() {
@@ -51,6 +52,7 @@ function Board() {
     return (
         <div>
             Board
+            <Nav/>
             <button onClick={logout}>logout</button>
             <Posts posts={posts} userId={userId} token={token}/>
         </div>

@@ -6,6 +6,7 @@ import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import PostComments from './PostComments'
 import { toast } from 'react-toastify'
+import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaRegCommentAlt} from 'react-icons/fa'
 
 function Comment(props) {
     //Props
@@ -26,9 +27,9 @@ function Comment(props) {
     const alreadyLiked = comment.likes.indexOf(userId)
     useEffect(() => {
         if (alreadyLiked == -1) {
-            setLike(<Button isSize='small' isColor='info' onClick={likeFn}>Like</Button>)
+            setLike(<Button isSize='small' isColor='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
         } else {
-            setLike(<Button isSize='small' isColor='info' onClick={unlikeFn}>Unlike</Button>)
+            setLike(<Button isSize='small' isColor='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
         }
     },[])
 
@@ -39,7 +40,7 @@ function Comment(props) {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setComment(response.data)
-                setLike(<Button isSize='small' isColor='info' onClick={unlikeFn}>Unlike</Button>)
+                setLike(<Button isSize='small' isColor='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
             })
             })
     }
@@ -51,7 +52,7 @@ function Comment(props) {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setComment(response.data)
-                setLike(<Button isSize='small' isColor='info' onClick={likeFn}>Like</Button>)
+                setLike(<Button isSize='small' isColor='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
             })
             })
     }

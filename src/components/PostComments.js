@@ -24,7 +24,6 @@ function PostComments (props) {
     useEffect(()=>{
         axios.get(commentsURL, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response)=>{
-            console.log(response.data)
             setComments(response.data)
         })
     },[])
@@ -43,7 +42,6 @@ function PostComments (props) {
         .then(() => {
             axios.get(commentsURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response)=>{
-                console.log(response.data)
                 setComments(response.data)
                 toast.success('Comment posted')
                 setNewComment('')

@@ -5,6 +5,8 @@ import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import PostComments from './PostComments'
+import { MdLogin  } from "react-icons/md";
+import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaRegCommentAlt} from 'react-icons/fa'
 
 function Post(props) {
     //Props
@@ -25,9 +27,9 @@ function Post(props) {
     const alreadyLiked = post.likes.indexOf(userId)
     useEffect(() => {
         if (alreadyLiked == -1) {
-            setLike(<a onClick={likeFn}>Like</a>)
+            setLike(<a onClick={likeFn}><FaThumbsUp/> Like</a>)
         } else {
-            setLike(<a onClick={unlikeFn}>Unlike</a>)
+            setLike(<a onClick={unlikeFn}><FaThumbsDown/> Unlike</a>)
         }
     },[])
 
@@ -46,7 +48,7 @@ function Post(props) {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setPost(response.data)
-                setLike(<a onClick={unlikeFn}>Unlike</a>)
+                setLike(<a onClick={unlikeFn}><FaThumbsDown/></a>)
             })
         })
     }
@@ -107,7 +109,7 @@ function Post(props) {
                         {like}
                     </CardFooterItem>
                     <CardFooterItem>
-                        <a onClick={toggleCommentsModal}>Comments</a>
+                        <a onClick={toggleCommentsModal}><FaCommentAlt/> Comments</a>
                     </CardFooterItem>
                 </CardFooter>
             </Card>
