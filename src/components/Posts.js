@@ -5,6 +5,7 @@ import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import Post from './Post'
+import { toast } from 'react-toastify'
 
 function Posts(props) {
     const token = props.token
@@ -32,6 +33,8 @@ function Posts(props) {
         axios.post(postSubmitURL, postToSubmit, {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             updatePosts()
+            toast.('Posted')
+            setNewPost('')
         })
 
 
