@@ -33,7 +33,7 @@ function Posts(props) {
         axios.post(postSubmitURL, postToSubmit, {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             updatePosts()
-            toast.('Posted')
+            toast.success('Posted')
             setNewPost('')
         })
 
