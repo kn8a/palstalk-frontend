@@ -41,7 +41,7 @@ function Posts(props) {
     <div>
             <Block>
                 <Card>
-                    <CardContent>
+                    <CardContent><Subtitle hasTextAlign='centered'>What's on your mind?</Subtitle>
                     <Media>
                         <MediaLeft>
                             <Image isSize='64x64' src={profilePic} />
@@ -49,7 +49,7 @@ function Posts(props) {
                         <MediaContent>  
                             <Field>
                                 <Control>
-                                    <TextArea onChange={(e) => onChange(e)} value={newPost} rows='3' placeholder={'Enter your comment'} />  
+                                    <TextArea onChange={(e) => onChange(e)} value={newPost} rows='3' placeholder={'Say something...'} />  
                                 </Control>
                             </Field>
                             <Field isGrouped='right'>

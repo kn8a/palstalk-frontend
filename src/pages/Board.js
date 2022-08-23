@@ -5,6 +5,8 @@ import { toast } from 'react-toastify'
 import axios from 'axios'
 import Posts from '../components/Posts'
 import Nav from '../components/Nav'
+import { Block } from 'react-bulma-components'
+import { Subtitle } from 'bloomer/lib/elements/Subtitle'
 
 
 function Board() {
@@ -51,15 +53,17 @@ function Board() {
 
     const logout = () => {
         localStorage.removeItem('palstalkToken')
+        localStorage.removeItem('palstalkUserId')
+        localStorage.removeItem('palstalkUserPic')
+        localStorage.removeItem('palstalkUserName')
         toast.success('Logged out successfully')
         navigate('/login')
     }
 
     return (
         <div>
-            Board
-            <Nav/>
-            <button onClick={logout}>logout</button>
+            <div></div><Block></Block>
+            
             <Posts posts={posts} userId={userId} token={token} updatePosts={updatePosts}/>
         </div>
     )

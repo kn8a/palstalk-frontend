@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+#nav {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+#logo {
+  color: white;
+  margin-right: 20px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap');
+
+#logo-text {
+  color: white;
+  font-family: 'Caveat', cursive;
+}
