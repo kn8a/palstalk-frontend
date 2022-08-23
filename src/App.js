@@ -32,7 +32,7 @@ function App() {
         <Route path='/friends/received' element={<Friends/>} />
       </Routes>
     </Router>
-    <ToastContainer/>
+    <ToastContainer position="bottom-left" theme='colored'/>
     </div>
   );
 }

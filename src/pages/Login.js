@@ -167,7 +167,7 @@ function Login() {
                 </div>
             <button onClick={toggleRegModal} className="modal-close is-large" aria-label="close"></button>
         </div>
-        <ToastContainer/>
+        
     </div>
   )
 }

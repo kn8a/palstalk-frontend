@@ -23,18 +23,26 @@ function Nav(props) {
     toast.success('Logged out successfully')
     navigate('/login')
 }
+  
 
     const [burgerActive, setBurgerActive] = useState(false)
 
 
+    if (!userName) {
+      return(<div></div>)
+    }
+
     return (
         <Navbar fixed='top' id='nav' color='info'>
             <Navbar.Brand id='logo'>
+            <Link to={'/'}>
             <Navbar.Item href="#">
               <Title id='logo-text' isSize={3} >palstalk</Title>
               
               
             </Navbar.Item>
+            </Link>
+            
 
                 <a role="button" className={`navbar-burger ${burgerActive? "is-active": ""}`} 
                     aria-label="menu" aria-expanded="false" 
@@ -58,10 +66,10 @@ function Nav(props) {
 
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                    <FaUserFriends/> &nbsp;Friends
+                    <FaUserFriends/> <strong>&nbsp;Friends</strong>
                     </a>
                     <div class="navbar-dropdown">
-                    <Link to="/about" class="navbar-item">
+                    <Link to="/friends" class="navbar-item">
                         My friends
                     </Link>
                     <hr class="navbar-divider"/>
@@ -92,7 +100,7 @@ function Nav(props) {
                 <div class="navbar-item">
                 <div class="navbar-item has-dropdown is-hoverable">
                     <a class="navbar-link">
-                    <FaUser/> &nbsp;{userName}
+                    <FaUser/> <strong>&nbsp;{userName}</strong>
                     </a>
 
                     <div class="navbar-dropdown">
@@ -102,8 +110,8 @@ function Nav(props) {
                     
                     
                     <hr class="navbar-divider"/>
-                    <a class="navbar-item">
-                    <FaSignOutAlt title='logout' cursor='pointer'  onClick={logout}/>&nbsp;Logout
+                    <a class="navbar-item" onClick={logout}> 
+                    <FaSignOutAlt title='logout' cursor='pointer'  />&nbsp;Logout
                     </a>
                     </div>
                 </div>
