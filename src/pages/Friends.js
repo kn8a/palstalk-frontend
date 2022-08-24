@@ -4,13 +4,17 @@ import UserCard from '../components/UserCard'
 
 function Friends() {
   return (
-    <Block display='flex' flexDirection='row'  flexWrap='wrap'>Friends
+    <div>
+    <Block></Block>
+    <Block display='flex' flexDirection='row' id='friends-container' flexWrap='wrap'>
+        <UserCard/>
         <UserCard/>
         <UserCard/>
         <UserCard/>
         <UserCard/>
         <UserCard/>
     </Block>
+    </div>
     
   )
 }

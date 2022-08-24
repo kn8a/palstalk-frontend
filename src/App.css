@@ -53,3 +53,8 @@
   color: white;
   font-family: 'Caveat', cursive;
 }
+
+#friends-container {
+  row-gap: 14px;
+
+}

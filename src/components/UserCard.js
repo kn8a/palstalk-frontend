@@ -5,10 +5,10 @@ import { Container } from 'bloomer/lib/layout/Container'
 
 function UserCard() {
   return (
-    <Card style={{ width: 200, margin: 'auto' }}>
+    <Card style={{ width: 200, margin: 'auto' }} textAlign='center'>
       
       <Card.Content>
-        <Media>
+        <Media justifyContent='center'>
           <Media.Item renderAs="figure" align="left">
             <Image
               size={32}
@@ -24,12 +24,9 @@ function UserCard() {
               @johnsmith
             </Heading>
           </Container>
+          <Block></Block>
         <Content>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-          iaculis mauris. <a>@bulmaio</a>.<a href="#1">#css</a>{' '}
-          <a href="#2">#responsive</a>
-          <br />
-          <time dateTime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+          <Button color={'warning'} fullwidth='true' rounded='true' size={'small'}>Unfriend</Button>
         </Content>
       </Card.Content>
     </Card>
