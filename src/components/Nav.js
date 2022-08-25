@@ -37,7 +37,7 @@ function Nav(props) {
             <Navbar.Brand id='logo'>
             <Link to={'/'}>
             <Navbar.Item href="#">
-              <Title id='logo-text' isSize={3} >palstalk</Title>
+              <Title id='logo-text' isSize={3} >sweetnook</Title>
               
               
             </Navbar.Item>
@@ -64,25 +64,25 @@ function Nav(props) {
 
                 
 
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div className="navbar-item has-dropdown is-boxed is-hoverable">
                     <a class="navbar-link">
                     <FaUserFriends/> <strong>&nbsp;Friends</strong>
                     </a>
-                    <div class="navbar-dropdown">
+                    <div class="navbar-dropdown is-boxed">
                     <Link to="/friends" class="navbar-item">
                         My friends
                     </Link>
                     <hr class="navbar-divider"/>
-                    <Link to="/about" class="navbar-item">
+                    <Link to="/friends/received" class="navbar-item">
                         Received requests
                     </Link>
-                    <Link to="/about" class="navbar-item">
+                    <Link to="/friends/sent" class="navbar-item">
                         Sent requests
                     </Link>
                     <hr class="navbar-divider"/>
-                    <a class="navbar-item">
+                    <Link to={'/friends/find'} class="navbar-item">
                         Find friends
-                    </a>
+                    </Link>
                     
                     
                     
@@ -97,13 +97,13 @@ function Nav(props) {
                 <div class="navbar-item">
                       
                 </div>
-                <div class="navbar-item">
-                <div class="navbar-item has-dropdown is-hoverable">
+                <div class="navbar-item is-hoverable" >
+                <div class="navbar-item has-dropdown is-hoverable is-boxed " >
                     <a class="navbar-link">
                     <FaUser/> <strong>&nbsp;{userName}</strong>
                     </a>
 
-                    <div class="navbar-dropdown">
+                    <div class="navbar-dropdown is-boxed">
                     <Link to="/about" class="navbar-item">
                     &nbsp;My profile
                     </Link>

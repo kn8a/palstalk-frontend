@@ -1,22 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Title, Subtitle, Content, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose} from 'bloomer'
 import { Loader, Card, Media, Block, Button, Heading  } from 'react-bulma-components'
 import { Container } from 'bloomer/lib/layout/Container'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
-function UserCard(props) {
+function NonFriendCard(props) {
   console.log(props)
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
-  const updateFriends = props.updateFriends
+  const updateUsers = props.updateUsers
 
-  const unfriend = (id) => {
-    const unfriendURL = `http://localhost:3000/api/users/${props.friend._id}/unfriend`
-    axios.put(unfriendURL,'', {headers: {"Authorization": `Bearer ${token}`}})
+  const [disabled, setDisabled] = useState(false)
+
+  const sendFriendRequest = (id) => {
+    const addFriendURL = `http://localhost:3000/api/users/${props.user._id}/send-friend-request`
+    axios.post(addFriendURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
-      updateFriends()
-      toast.info(`Unfriended ${props.friend.name_first} ${props.friend.name_last}`)
+      //updateUsers()
+      setDisabled(true)
+      toast.info(`Sent friend request to ${props.user.name_first} ${props.user.name_last}`)
     })
   }
 
@@ -27,24 +30,24 @@ function UserCard(props) {
         <Media justifyContent='center'>
           <Media.Item renderAs="figure" align="left">
             <Image
-              isSize="96x96"
-              alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}
-              src={props.friend.profile_pic}
+              isSize="128x128"
+              alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}
+              src={props.user.profile_pic}
             />
           </Media.Item>
           
         </Media>
         <Container>
-            <Heading size={4}>{`${props.friend.name_first} ${props.friend.name_last}`}</Heading>
+            <Heading size={6}>{`${props.user.name_first} ${props.user.name_last}`}</Heading>
             
           </Container>
           <Block></Block>
         <Content>
-          <Button onClick={unfriend} color={'danger'} fullwidth='true' rounded='true' size={'small'}>Unfriend</Button>
+          <Button onClick={sendFriendRequest} disabled={disabled} color={'success'} fullwidth='true' rounded='true' >Add friend</Button>
         </Content>
       </Card.Content>
     </Card>
   )
 }
 
-export default UserCard
+export default NonFriendCard

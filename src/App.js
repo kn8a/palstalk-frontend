@@ -13,7 +13,9 @@ import Profile from './pages/Profile'
 import Users from './pages/Users'
 import Register from './pages/Login'
 import Friends from './pages/Friends';
-
+import FindFriends from './pages/FindFriends';
+import ReceivedRequests from './pages/ReceivedRequests'
+import SentRequests from './pages/SentRequests';
 
 function App() {
 
@@ -28,8 +30,9 @@ function App() {
         <Route path='/' element={<Board/>} />
         <Route path='/profile' element={<Profile/>} />
         <Route path='/friends' element={<Friends/>} />
-        <Route path='/friends/sent' element={<Friends/>} />
-        <Route path='/friends/received' element={<Friends/>} />
+        <Route path='/friends/find' element={<FindFriends/>} />
+        <Route path='/friends/sent' element={<SentRequests/>} />
+        <Route path='/friends/received' element={<ReceivedRequests/>} />
       </Routes>
     </Router>
     <ToastContainer position="bottom-left" theme='colored'/>
