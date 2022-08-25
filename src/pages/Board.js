@@ -27,7 +27,7 @@ function Board() {
         if (!token) {
             navigate('/login')
         } else {
-            axios.get(postsURL, {headers: {"Authorization": `Bearer ${token}`}})
+            axios.get(postsURL, `http://localhost:3000/api/posts/board`)
             
             //setUserId(userId)
             .then((response) => {
