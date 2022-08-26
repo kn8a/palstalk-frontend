@@ -36,7 +36,7 @@ function Login() {
         axios.post(loginURL, credentials)
         .then( (response) => {
             if (response.data.token) {
-                console.log(response.data.token)
+                //console.log(response.data.token)
                 localStorage.setItem('palstalkToken', response.data.token)
                 localStorage.setItem('palstalkUserId', response.data.id)
                 localStorage.setItem('palstalkUserPic', response.data.profile_pic)
@@ -56,10 +56,10 @@ function Login() {
     const register = (e) => {
         setRegBtnState('is-loading')
         e.preventDefault() 
-        console.log(registerInfo) 
+        //console.log(registerInfo) 
         axios.post(registerURL, registerInfo)
         .then( (response) => {
-            console.log(response)
+            //console.log(response)
             if (response.data.message == 'Profile created successfully') {  
                 toast.success(`${response.data.message}. Please login to continue`)
                 setRegBtnState('')
