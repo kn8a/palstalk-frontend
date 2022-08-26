@@ -27,7 +27,7 @@ function Board() {
         if (!token) {
             navigate('/login')
         } else {
-            axios.get(postsURL, `http://localhost:3000/api/posts/board`)
+            axios.get(postsURL, {headers: {"Authorization": `Bearer ${token}`}})
             
             //setUserId(userId)
             .then((response) => {
@@ -51,14 +51,14 @@ function Board() {
         navigate('/login')
     }
 
-    const logout = () => {
-        localStorage.removeItem('palstalkToken')
-        localStorage.removeItem('palstalkUserId')
-        localStorage.removeItem('palstalkUserPic')
-        localStorage.removeItem('palstalkUserName')
-        toast.success('Logged out successfully')
-        navigate('/login')
-    }
+    // const logout = () => {
+    //     localStorage.removeItem('palstalkToken')
+    //     localStorage.removeItem('palstalkUserId')
+    //     localStorage.removeItem('palstalkUserPic')
+    //     localStorage.removeItem('palstalkUserName')
+    //     toast.success('Logged out successfully')
+    //     navigate('/login')
+    // }
 
     return (
         <div>
