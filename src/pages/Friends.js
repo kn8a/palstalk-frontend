@@ -4,6 +4,7 @@ import { Block } from 'react-bulma-components'
 import { toast } from 'react-toastify'
 import UserCard from '../components/UserCard'
 
+
 function Friends() {
 
   const profileURL = 'http://localhost:3000/api/users/profile'

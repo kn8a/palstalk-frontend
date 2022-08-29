@@ -50,6 +50,7 @@ function Login() {
         .catch((error) => {
             console.log(error)
             setLoginBtnState('')
+            toast.error(error.response.data.message)
         })
     }
 
@@ -108,6 +109,7 @@ function Login() {
 
   return (
     <div>
+        
         <form onSubmit={login}>Login
             <input className="input" required onChange={onChange} value={credentials.email} name='email' type="email" placeholder="example@email.com"/>
             <input className="input" required onChange={onChange} value={credentials.password} name='password' type="password" placeholder="*********"/>
@@ -167,7 +169,6 @@ function Login() {
                 </div>
             <button onClick={toggleRegModal} className="modal-close is-large" aria-label="close"></button>
         </div>
-        
     </div>
   )
 }

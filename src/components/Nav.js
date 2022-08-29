@@ -104,7 +104,7 @@ function Nav(props) {
                     </a>
 
                     <div class="navbar-dropdown is-boxed">
-                    <Link to="/about" class="navbar-item">
+                    <Link to="/profile" class="navbar-item">
                     &nbsp;My profile
                     </Link>
                     

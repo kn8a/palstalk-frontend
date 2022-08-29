@@ -17,7 +17,7 @@ function Posts(props) {
     const [newPost, setNewPost] = useState()
     //console.log(props.userId, props.token)
     if (!props.posts) {
-        return(<Loader/>)
+        return(<Block><Loader/></Block>)
     }
 
     const onChange = (e) => {

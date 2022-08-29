@@ -67,8 +67,8 @@ function Comment(props) {
                             <Image isSize='32x32' src={comment.author.profile_pic} />
                         </MediaLeft>
                         <MediaContent>
-                            <Columns is-centered>
-                                <Column hasTextAlign='left'>
+                            <Columns is-centered >
+                                <Column hasTextAlign='left' isSize='3/4'>
                                     <Title isSize={6}>{comment.author.name_first} {comment.author.name_last}<small> @ {DateTime.fromISO(comment.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</small></Title>
                                     <div>{comment.comment}</div>
                                 </Column>

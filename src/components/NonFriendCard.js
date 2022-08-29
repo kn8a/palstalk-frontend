@@ -4,9 +4,11 @@ import { Loader, Card, Media, Block, Button, Heading  } from 'react-bulma-compon
 import { Container } from 'bloomer/lib/layout/Container'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { Link, useNavigate } from 'react-router-dom'
 
 function NonFriendCard(props) {
-  console.log(props)
+  const navigate = useNavigate()
+  //console.log(props)
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   const updateUsers = props.updateUsers
@@ -38,7 +40,10 @@ function NonFriendCard(props) {
           
         </Media>
         <Container>
+            <Link to={`/users/${props.user._id}`}>
             <Heading size={6}>{`${props.user.name_first} ${props.user.name_last}`}</Heading>
+            </Link>
+            
             
           </Container>
           <Block></Block>
