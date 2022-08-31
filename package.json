@@ -20,9 +20,11 @@
     "react-bulma-components": "^4.1.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+    "react-images-upload": "^1.2.8",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
-    "react-toastify": "^9.0.7"
+    "react-toastify": "^9.0.7",
+    "react-uploader": "^1.8.2"
   },
   "scripts": {
     "start": "react-scripts start",
