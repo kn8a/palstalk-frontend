@@ -3,7 +3,7 @@ import {
     Link, useNavigate
   } from 'react-router-dom' 
 import { toast } from 'react-toastify'
-import {FaCommentAlt, FaThumbsDown, FaComments, FaClipboardList, FaThumbsUp, FaRegCommentAlt, FaUser, FaSignOutAlt, FaUserFriends, FaUserAlt} from 'react-icons/fa'
+import {FaCommentAlt, FaThumbsDown, FaRegAddressCard, FaComments, FaArrowAltCircleDown, FaArrowAltCircleUp, FaClipboardList, FaThumbsUp, FaRegCommentAlt, FaUser, FaSignOutAlt, FaUserFriends, FaUserAlt, FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAddressBook} from 'react-icons/fa'
 import 'bulma/css/bulma.min.css';
 import { Navbar, Button, Heading } from 'react-bulma-components';
 import { Content } from 'bloomer/lib/elements/Content';
@@ -70,18 +70,18 @@ function Nav(props) {
                     </a>
                     <div class="navbar-dropdown is-boxed">
                     <Link to="/friends" class="navbar-item">
-                        My friends
+                        <FaUserFriends/>&nbsp;My friends
                     </Link>
                     <hr class="navbar-divider"/>
                     <Link to="/friends/received" class="navbar-item">
-                        Received requests
+                        <FaArrowAltCircleLeft/>&nbsp;Received requests
                     </Link>
                     <Link to="/friends/sent" class="navbar-item">
-                        Sent requests
+                        <FaArrowAltCircleRight/>&nbsp;Sent requests
                     </Link>
                     <hr class="navbar-divider"/>
                     <Link to={'/friends/find'} class="navbar-item">
-                        Find friends
+                        <FaAddressBook/>&nbsp;Find friends
                     </Link>
                     
                     
@@ -105,7 +105,7 @@ function Nav(props) {
 
                     <div class="navbar-dropdown is-boxed">
                     <Link to="/profile" class="navbar-item">
-                    &nbsp;My profile
+                    <FaRegAddressCard/>&nbsp;My profile
                     </Link>
                     
                     

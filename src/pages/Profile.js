@@ -3,7 +3,8 @@ import {  } from 'bloomer/lib/elements/Heading'
 import { Title } from 'bloomer/lib/elements/Title'
 import React, { useEffect, useState } from 'react'
 import { Heading, Button, Box, Message, Control, Label, Input, Textarea, Help, Form, Block, Modal, Container, Image, Content } from 'react-bulma-components'
-
+import MyProfilePosts from '../components/MyProfilePosts'
+import { FaUpload, FaCheck, FaUserEdit } from 'react-icons/fa'
 
 
 function Profile(props) {
@@ -144,6 +145,31 @@ function Profile(props) {
       })
       .catch((err) => { console.log(err)}); // Catch errors if any
   }
+
+  //* posts
+  const postsURL = `http://localhost:3000/api/posts/my_posts`
+
+  const [posts, setPosts] = useState()
+
+  useEffect(() => {
+    const token = localStorage.getItem('palstalkToken')
+        axios.get(postsURL, {headers: {"Authorization": `Bearer ${token}`}})
+        .then((response) => {
+            setPosts(response.data)
+            console.log(response.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    
+},[])
+
+const updatePosts = () => {
+    axios.get(postsURL, {headers: {"Authorization": `Bearer ${token}`}})
+        .then((response) => {
+            setPosts(response.data)
+        })
+}
   
   return (
     <div>
@@ -158,7 +184,7 @@ function Profile(props) {
     <input class="file-input" type="file" name="resume" onChange={(e) => handleFile(e)}></input>
     <span class="file-cta">
       <span class="file-icon">
-        <i class="fas fa-upload"></i>
+        <FaUpload/>
       </span>
       <span class="file-label">
         Choose a file…
@@ -168,7 +194,7 @@ function Profile(props) {
       {file.name}
     </span>
   </label><Block></Block>
-  <button onClick={(e) => handleUpload(e)} disabled={uploadDisabled} className={`is-info button ${uploadLoading}` }>Confirm & Upload</button>
+  <button onClick={(e) => handleUpload(e)} disabled={uploadDisabled} className={`is-info button ${uploadLoading}` }><FaCheck/>&nbsp;Confirm & Upload</button>
 </div>
     </Box>
     
@@ -187,12 +213,13 @@ function Profile(props) {
           
         </ul>
       </Content>
-      <Button color={'info'} onClick={toggleEditModal}>Edit Profile</Button>
+      <Button color={'info'} onClick={toggleEditModal}><FaUserEdit/>&nbsp;Edit Profile</Button>
     </Box>
       
 
     <Box>
       <Heading  size={5}>My posts</Heading>
+      <MyProfilePosts posts={posts}/>
     </Box>
 
           
