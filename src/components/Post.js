@@ -82,7 +82,7 @@ function Post(props) {
                 <CardContent>
                     <Media>
                         <MediaLeft>
-                            <Image isSize='48x48' src={post.author.profile_pic} />
+                            <Image isSize='48x48' src={`http://localhost:3000/api/file/${post.author.profile_pic}`} />
                         </MediaLeft>
                         <MediaContent>
                             <Title isSize={5}>{post.author.name_first} {post.author.name_last}</Title>

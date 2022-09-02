@@ -38,7 +38,7 @@ function ReqRecCard(props) {
             <Image
               isSize="96x96"
               alt={`Picture of ${props.request.from.name_first} ${props.request.from.name_last}`}
-              src={props.request.from.profile_pic}
+              src={`http://localhost:3000/api/file/${props.request.from.profile_pic}`}
             />
           </Media.Item>
           

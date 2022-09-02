@@ -30,7 +30,7 @@ function UserCard(props) {
             <Image
               isSize="96x96"
               alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}
-              src={props.friend.profile_pic}
+              src={`http://localhost:3000/api/file/${props.friend.profile_pic}`}
             />
           </Media.Item>
           

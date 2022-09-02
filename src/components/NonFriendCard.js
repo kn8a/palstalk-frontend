@@ -34,7 +34,7 @@ function NonFriendCard(props) {
             <Image
               isSize="128x128"
               alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}
-              src={props.user.profile_pic}
+              src={`http://localhost:3000/api/file/${props.user.profile_pic}`}
             />
           </Media.Item>
           

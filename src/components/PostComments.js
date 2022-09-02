@@ -64,7 +64,7 @@ function PostComments (props) {
                     <CardContent>
                     <Media>
                         <MediaLeft>
-                            <Image isSize='64x64' src={profilePic} />
+                            <Image isSize='64x64' src={`http://localhost:3000/api/file/${profilePic}`} />
                         </MediaLeft>
                         <MediaContent>  
                             <Field>
