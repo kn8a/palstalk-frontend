@@ -14,7 +14,7 @@ function MyProfilePosts(props) {
     const profileName = localStorage.getItem('palstalkUserName')
     const postSubmitURL = `http://localhost:3000/api/posts`
     const updatePosts = props.updatePosts
-    console.log(props.posts)
+    //console.log(props.posts)
     const [newPost, setNewPost] = useState()
     //console.log(props.userId, props.token)
     if (!props.posts) {
@@ -51,7 +51,7 @@ function MyProfilePosts(props) {
             
         return (
             <Block key={post._id}>
-                <MyProfilePost post={post} token={token} userId={props.userId}/>
+                <MyProfilePost post={post} token={token} updatePosts={props.updatePosts} userId={props.userId}/>
             </Block>
             
         )

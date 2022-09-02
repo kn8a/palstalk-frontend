@@ -12,6 +12,7 @@ function MyProfilePost(props) {
     //Props
     const userId = props.userId
     const token = props.token
+    const updatePosts = props.updatePosts
 
     //states
     const [post, setPost] = useState(props.post)
@@ -91,12 +92,23 @@ function MyProfilePost(props) {
     }
 
     const submitEdit = () => {
-        
+
     }
 
     const cancelEdit = () => {
         setPostContent(post.content)
         toggleEditModal()
+    }
+
+
+    //* delete post
+
+    const postDelete = () => {
+        const deleteURL = `http://localhost:3000/api/posts/${post._id}`
+        axios.delete(deleteURL, {headers: {"Authorization": `Bearer ${token}`}})
+        .then((response) => {
+            updatePosts()
+        })
     }
 
   return (
@@ -127,7 +139,7 @@ function MyProfilePost(props) {
                         <a onClick={toggleEditModal}><FaEdit/> Edit</a> 
                     </CardFooterItem>
                     <CardFooterItem>
-                        <a><FaTrash/> Delete</a>
+                        <a onClick={postDelete}><FaTrash/> Delete</a>
                     </CardFooterItem>
                 </CardFooter>
             </Card>

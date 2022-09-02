@@ -219,7 +219,7 @@ const updatePosts = () => {
 
     <Box>
       <Heading  size={5}>My posts</Heading>
-      <MyProfilePosts posts={posts}/>
+      <MyProfilePosts updatePosts={updatePosts} posts={posts}/>
     </Box>
 
           
