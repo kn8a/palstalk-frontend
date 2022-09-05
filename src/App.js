@@ -41,7 +41,7 @@ function App() {
         <Route path='/users/:userId' element={<UserPage/>}/>
       </Routes>
     </Router>
-    <ToastContainer position="bottom-left" theme='colored'/>
+    <ToastContainer position="bottom-left" theme='colored' />
     </div>
   );
 }
