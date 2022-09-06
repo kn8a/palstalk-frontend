@@ -64,7 +64,7 @@ function Comment(props) {
                 <CardContent>
                     <Media>
                         <MediaLeft>
-                            <Image isSize='32x32' src={comment.author.profile_pic} />
+                            <Image isSize='32x32' src={`http://localhost:3000/api/file/${comment.author.profile_pic}`} />
                         </MediaLeft>
                         <MediaContent>
                             <Columns is-centered >

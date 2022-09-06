@@ -25,8 +25,8 @@ function UserCard(props) {
     <Card style={{ width: 200, margin: 'auto' }} textAlign='center'>
       
       <Card.Content>
-        <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+        <Media justifyContent='center' display='flex'>
+          <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="96x96"
               alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}

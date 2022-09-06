@@ -18,11 +18,11 @@ function UserFriendCard(props) {
       
       <Card.Content>
         <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+          <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="96x96"
               alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}
-              src={props.friend.profile_pic}
+              src={`http://localhost:3000/api/file/${props.friend.profile_pic}`}
             />
           </Media.Item>
           

@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle, Content, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose} from 'bloomer'
-import { Loader, Card, Media, Block, Button  } from 'react-bulma-components'
+import {Title, Subtitle,  MediaLeft, MediaContent, Image, CardContent, CardFooterItem,  Column,  } from 'bloomer'
+import { Loader, Card, Media, Block, Button, Columns, Content, } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import PostComments from './PostComments'
-import { MdLogin  } from "react-icons/md";
-import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaRegCommentAlt} from 'react-icons/fa'
+
+import {FaCommentAlt, FaThumbsDown, FaThumbsUp, } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 
 function Post(props) {
     //Props
@@ -82,26 +83,26 @@ function Post(props) {
                 <CardContent>
                     <Media>
                         <MediaLeft>
+                            <Link to={`/users/${post.author._id}`}>
                             <Image isSize='48x48' src={`http://localhost:3000/api/file/${post.author.profile_pic}`} />
+                            </Link>
                         </MediaLeft>
                         <MediaContent>
+                            <Link to={`/users/${post.author._id}`}>
                             <Title isSize={5}>{post.author.name_first} {post.author.name_last}</Title>
+                            </Link>
                             <Subtitle isSize={6}>@{DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</Subtitle>
                         </MediaContent>
                     </Media>
                     <Content>
-                        {post.content}
-                        <br/>
+                        <div style={{ whiteSpace: 'pre-wrap' }}>
+                            {post.content}
+                        </div>
                     </Content>
-                    <Content >
-                        <Columns is-centered="true">
-                            <Column hasTextAlign='left'>
-                                <small>{post.likes.length} Likes</small>
-                            </Column>
-                            <Column hasTextAlign='right'>
-                                <small>{post.comments.length} Comments</small>
-                            </Column>
-                        </Columns>    
+                    <Content display='flex' justifyContent='space-between'>
+                        <small>{post.likes.length} Likes</small>
+                        <small>{post.comments.length} Comments</small>
+                           
                     </Content>
                 </CardContent>
                 <CardFooter>

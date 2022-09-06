@@ -4,9 +4,10 @@ import { Loader, Card, Media, Block, Button, Heading  } from 'react-bulma-compon
 import { Container } from 'bloomer/lib/layout/Container'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 function SentReqCard(props) {
-  console.log(props.request)
+  //console.log(props.request)
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   const updateRequests = props.updateRequests
@@ -34,7 +35,7 @@ function SentReqCard(props) {
       
       <Card.Content>
         <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+          <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="96x96"
               alt={`Picture of ${props.request.to.name_first} ${props.request.to.name_last}`}
@@ -44,8 +45,9 @@ function SentReqCard(props) {
           
         </Media>
         <Container>
+        <Link to={`/users/${props.request.to._id}`}>
             <Heading size={4}>{`${props.request.to.name_first} ${props.request.to.name_last}`}</Heading>
-            
+            </Link>
           </Container>
           <Block></Block>
         <Content>

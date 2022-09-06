@@ -43,6 +43,7 @@
 #nav {
   padding-left: 5%;
   padding-right: 5%;
+  background-color: #AA1945;
 }
 
 #logo {
@@ -62,7 +63,17 @@
 
 }
 
+.friends-container {
+  row-gap: 14px;
+  
+}
+
 #about-me {
   background-color: white;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+ul {
+  list-style-type: none;
 }

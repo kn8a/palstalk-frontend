@@ -4,6 +4,7 @@ import { Loader, Card, Media, Block, Button, Heading  } from 'react-bulma-compon
 import { Container } from 'bloomer/lib/layout/Container'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { Link } from 'react-router-dom'
 
 function PendingFriendCard(props) {
   
@@ -12,7 +13,7 @@ function PendingFriendCard(props) {
       
       <Card.Content>
         <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+          <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="128x128"
               alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}
@@ -22,8 +23,10 @@ function PendingFriendCard(props) {
           
         </Media>
         <Container>
+          <Link to={`/users/${props.user._id}`}>
             <Heading size={6}>{`${props.user.name_first} ${props.user.name_last}`}</Heading>
-            
+           </Link>
+
           </Container>
           <Block></Block>
         <Content>

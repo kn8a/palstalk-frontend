@@ -34,7 +34,7 @@ function ReqRecCard(props) {
       
       <Card.Content>
         <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+          <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="96x96"
               alt={`Picture of ${props.request.from.name_first} ${props.request.from.name_last}`}

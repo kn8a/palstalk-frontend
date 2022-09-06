@@ -4,13 +4,14 @@ import { Card, Block, Content, Box, Button, Form, Container, Heading } from 'rea
 import { DateTime } from 'luxon'
 import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
-import PostComments from './PostComments'
+
+import PostComments from '../PostComments'
 
 import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaEdit, FaTrash} from 'react-icons/fa'
 
-function MyProfilePost(props) {
+function UserPost(props) {
     //Props
-    const userId = props.userId
+    const userId = localStorage.getItem('palstalkUserId')
     const token = props.token
     const updatePosts = props.updatePosts
 
@@ -152,12 +153,7 @@ function MyProfilePost(props) {
                     <CardFooterItem>
                         <a onClick={toggleCommentsModal}><FaCommentAlt/> Comments</a>
                     </CardFooterItem>
-                    <CardFooterItem>
-                        <a onClick={toggleEditModal}><FaEdit/> Edit</a> 
-                    </CardFooterItem>
-                    <CardFooterItem>
-                        <a onClick={toggleDelModal}><FaTrash/> Delete</a>
-                    </CardFooterItem>
+                    
                 </CardFooter>
             </Card>
             </Block>
@@ -170,25 +166,7 @@ function MyProfilePost(props) {
             <button onClick={toggleCommentsModal} className="modal-close is-large" aria-label="close"></button>
         </div>
 
-        <div className={`modal ${delModal}`}>
-            <div className="modal-background" onClick={toggleDelModal}></div>
-                <div className="modal-content">
-                    <Content>
-                        <Box>
-                        <Heading size={5} textAlign='center'>Are you sure you want to delete this post?</Heading>
-                        <Heading subtitle='true' size={6} textAlign={'center'}>All comments and likes will also be deleted</Heading>
-                        <Block></Block>
-                        <Container display='flex' justifyContent='space-evenly'>
-                        <Button color={'danger'} outlined={true} onClick={postDelete}>Yes, delete!</Button>
-                        <Button color={'info'} outlined onClick={toggleDelModal}>No, go back.</Button>
-                        </Container>
-                            
-                        </Box>
-                        
-                    </Content>
-                </div>
-            <button onClick={toggleDelModal} className="modal-close is-large" aria-label="close"></button>
-        </div>
+        
         
 
         <div className={`modal ${editModal}`}>
@@ -244,4 +222,4 @@ function MyProfilePost(props) {
   )
 }
 
-export default MyProfilePost
+export default UserPost

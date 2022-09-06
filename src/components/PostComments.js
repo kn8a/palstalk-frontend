@@ -1,16 +1,16 @@
 
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle, Content, MediaLeft, Button, Delete, MediaContent, Field, Control, TextArea, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box, Input} from 'bloomer'
-import { Loader, Card, Media, Block,  Form  } from 'react-bulma-components'
-import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
+import {MediaLeft, Button,  MediaContent, Field, Control, TextArea, Image, CardContent} from 'bloomer'
+import { Card, Media, Box } from 'react-bulma-components'
+
+
 import axios from 'axios'
 import Comment from './Comment'
 import { toast } from 'react-toastify'
 
 
 function PostComments (props) {
-    const userId = props.userId
+    const userId = localStorage.getItem('palstalkUserId')
     const token = props.token
     const postId = props.postId
     const profilePic = localStorage.getItem('palstalkUserPic')

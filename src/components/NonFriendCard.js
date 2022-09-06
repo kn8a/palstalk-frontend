@@ -29,8 +29,8 @@ function NonFriendCard(props) {
     <Card style={{ width: 200, margin: 'auto' }} textAlign='center'>
       
       <Card.Content>
-        <Media justifyContent='center'>
-          <Media.Item renderAs="figure" align="left">
+        <Media justifyContent='center' display='flex'>
+          <Media.Item renderAs="figure" display='flex' justifyContent='center' renderAs="figure">
             <Image
               isSize="128x128"
               alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}

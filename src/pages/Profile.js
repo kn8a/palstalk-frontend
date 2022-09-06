@@ -209,7 +209,7 @@ const updatePosts = () => {
           <li>Last Name: {user.name_last}</li>
           <li>Location: {user.location}</li>
           <li>Gender: {user.gender}</li>
-          <li>About me:<pre id='about-me'>{user.bio}</pre></li>
+          <li>About me:<div style={{ whiteSpace: 'pre-wrap' }}>{user.bio}</div></li>
           
         </ul>
       </Content>
