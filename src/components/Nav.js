@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
-import {
-    Link, useNavigate
-  } from 'react-router-dom' 
+import { Link, useNavigate } from 'react-router-dom' 
 import { toast } from 'react-toastify'
-import {FaCommentAlt, FaThumbsDown, FaRegAddressCard, FaComments, FaArrowAltCircleDown, FaArrowAltCircleUp, FaClipboardList, FaThumbsUp, FaRegCommentAlt, FaUser, FaSignOutAlt, FaUserFriends, FaUserAlt, FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAddressBook} from 'react-icons/fa'
+import { FaRegAddressCard, FaComments,  FaUser, FaSignOutAlt, FaUserFriends,  FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAddressBook} from 'react-icons/fa'
 import 'bulma/css/bulma.min.css';
-import { Navbar, Button, Heading } from 'react-bulma-components';
-import { Content } from 'bloomer/lib/elements/Content';
+import { Navbar, } from 'react-bulma-components';
 import { Title } from 'bloomer';
 
 
@@ -33,7 +30,7 @@ function Nav(props) {
     }
 
     return (
-        <Navbar fixed='top' id='nav' color='info'>
+        <Navbar fixed='top' id='nav' color='danger'>
             <Navbar.Brand id='logo'>
             <Link to={'/'}>
             <Navbar.Item href="#">
@@ -57,9 +54,10 @@ function Nav(props) {
 
             <div id="navMain" className={`navbar-menu ${burgerActive? "is-active": ""}`}>
                 <div class="navbar-start">
+                
                 <Link to="/" class="navbar-item">
                     <FaComments/>
-                    &nbsp;Board
+                    <strong>&nbsp; PostsBoard</strong>
                 </Link>
 
                 
@@ -97,7 +95,7 @@ function Nav(props) {
                 <div class="navbar-item">
                       
                 </div>
-                <div class="navbar-item is-hoverable" >
+
                 <div class="navbar-item has-dropdown is-hoverable is-boxed " >
                     <a class="navbar-link">
                     <FaUser/> <strong>&nbsp;{userName}</strong>
@@ -117,7 +115,7 @@ function Nav(props) {
                 </div>
                       
                 </div>
-                </div>
+
             </div>
             </Navbar>
     )

@@ -19,10 +19,27 @@ import ReceivedRequests from './pages/ReceivedRequests'
 import SentRequests from './pages/SentRequests';
 import UserPage from './pages/UserPage';
 import Login2 from './pages/Login2';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 
 function App() {
 
-  
+  const [apiConnected, setApiConnected] = useState(false)
+
+  useEffect (()=> {
+    axios.get('http://localhost:3000/api/ping')
+    .then((response) => {
+      if(response.data.message == 'ok') {
+        console.log('API connected')
+        setApiConnected(true)
+      }
+    })
+  },[])
+
+  if (!apiConnected) {
+    return (<div className="is-active pageloader is-info"><span className="title">Connecting to Sweetnook. Please wait.</span></div>)
+  }
 
   return (
     <div className='container is-max-desktop'>

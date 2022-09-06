@@ -42,9 +42,15 @@ function UserPage(props) {
                             <Heading textAlign={'center'} alignItems={'flex-end'}>{`${user.name_first} ${user.name_last}`}</Heading>
 
                         </Columns.Column>
-    
-                        <Columns.Column display='flex' justifyContent='center' alignItems='end'>
-                            <Button>Add friend</Button>
+                                <div className="vertLine">
+                                
+                                </div>
+
+                        <Columns.Column display='flex' justifyContent='center' flexDirection='column' alignItems='center'>
+                            <Heading subtitle size={5}>About {user.name_first}</Heading>
+                            <div style={{ whiteSpace: 'pre-wrap' }}>
+                                {user.bio}
+                            </div>
                         </Columns.Column>
                             
                     </Columns>
