@@ -31,7 +31,7 @@ function Nav(props) {
 
     return (
         <Navbar fixed='top' id='nav' color='danger'>
-            <Navbar.Brand id='logo'>
+            <Navbar.Brand id='logo' display='flex' alignItems='center' justifyContent='left'>
             <Link to={'/'}>
             <Navbar.Item href="#">
               <Title id='logo-text' isSize={3} >sweetnook</Title>

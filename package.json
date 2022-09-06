@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3000",
   "dependencies": {
     "@chakra-ui/react": "^2.2.9",
+    "@creativebulma/bulma-badge": "^1.0.1",
     "@creativebulma/bulma-divider": "^1.1.0",
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",

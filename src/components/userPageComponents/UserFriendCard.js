@@ -28,9 +28,9 @@ function UserFriendCard(props) {
           
         </Media>
         <Container>
-            <Link to={`/users/${props.friend._id}`}>
-            <Heading size={6}>{`${props.friend.name_first} ${props.friend.name_last}`}</Heading>
-            </Link>
+            
+            <Heading size={6} >{`${props.friend.name_first} ${props.friend.name_last}`}</Heading>
+            
           </Container>
           <Block></Block>
         

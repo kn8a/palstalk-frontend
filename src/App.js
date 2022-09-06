@@ -35,11 +35,16 @@ function App() {
         setApiConnected(true)
       }
     })
+    .catch((err) => {
+      console.log(err)
+    })
   },[])
 
   if (!apiConnected) {
     return (<div className="is-active pageloader is-info"><span className="title">Connecting to Sweetnook. Please wait.</span></div>)
   }
+
+  
 
   return (
     <div className='container is-max-desktop'>
