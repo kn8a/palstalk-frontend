@@ -1,9 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Block } from 'react-bulma-components'
-import { toast } from 'react-toastify'
-import UserCard from '../components/UserCard'
-import ReqRecCard from '../components/RecReqCard'
 import SentReqCard from '../components/SentRecCard'
 
 function SentRequests() {
