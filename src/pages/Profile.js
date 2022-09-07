@@ -1,8 +1,6 @@
 import axios from 'axios'
-import {  } from 'bloomer/lib/elements/Heading'
-import { Title } from 'bloomer/lib/elements/Title'
 import React, { useEffect, useState } from 'react'
-import { Heading, Button, Box, Message, Control, Label, Input, Textarea, Help, Form, Block, Modal, Container, Image, Content } from 'react-bulma-components'
+import { Heading, Button, Box,  Form, Block, Container, Image, Content } from 'react-bulma-components'
 import MyProfilePosts from '../components/MyProfilePosts'
 import { FaUpload, FaCheck, FaUserEdit } from 'react-icons/fa'
 
