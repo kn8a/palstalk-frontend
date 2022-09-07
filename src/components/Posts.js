@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Loader, Card, Media, Block,Button, Form, Image, Heading} from 'react-bulma-components'
+import { Loader, Card, Media, Block, Button, Form, Image, Heading} from 'react-bulma-components'
 import axios from 'axios'
 import Post from './Post'
 import { toast } from 'react-toastify'

@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import {MediaLeft, Button,  MediaContent, Field, Control, TextArea, Image, CardContent} from 'bloomer'
-import { Card, Media, Box } from 'react-bulma-components'
+import { Card, Media, Box, Form, Image, Button, } from 'react-bulma-components'
 
 
 import axios from 'axios'
@@ -61,29 +60,29 @@ function PostComments (props) {
         <Box>
             
                 <Card>
-                    <CardContent>
+                    <Card.Content>
                     <Media>
-                        <MediaLeft>
-                            <Image isSize='64x64' src={`http://localhost:3000/api/file/${profilePic}`} />
-                        </MediaLeft>
-                        <MediaContent>  
-                            <Field>
-                                <Control>
-                                    <TextArea onChange={(e) => onChange(e)} value={newComment} rows='2' placeholder={'Enter your comment'} />  
-                                </Control>
-                            </Field>
-                            <Field isGrouped='right'>
-                                <Control>
+                        <Media.Item align="left">
+                            <Image size={64} src={`http://localhost:3000/api/file/${profilePic}`} />
+                        </Media.Item>
+                        <Media.Item align="center"> 
+                            <Form.Field>
+                                <Form.Control>
+                                    <Form.Textarea onChange={(e) => onChange(e)} value={newComment} rows='2' placeholder={'Enter your comment'} />  
+                                </Form.Control>
+                            </Form.Field>
+                            <Form.Field kind='group' justifyContent='right'>
+                                <Form.Control>
                                     <small>{`Posting as ${profileName} `}</small>
-                                </Control>
+                                </Form.Control>
                                 
-                                <Control>
-                                    <Button onClick={submitNewComment} isSize='small' isColor='info'>Comment</Button>
-                                </Control>
-                            </Field>   
-                        </MediaContent>
+                                <Form.Control>
+                                    <Button onClick={submitNewComment} size='small' color='info'>Comment</Button>
+                                </Form.Control>
+                            </Form.Field>   
+                        </Media.Item>
                     </Media>
-                    </CardContent>
+                    </Card.Content>
                 </Card> 
         {comments.map((comment)=>{
             return(
