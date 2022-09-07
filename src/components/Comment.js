@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Loader, Card, Media, Block, Heading, Button, Image, Columns, Container  } from 'react-bulma-components'
+import { Card, Media, Block, Heading, Button, Image,  Container  } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 
-import { toast } from 'react-toastify'
+
 import { FaThumbsDown, FaThumbsUp, } from 'react-icons/fa'
 
 function Comment(props) {
@@ -65,17 +65,10 @@ function Comment(props) {
                             <Image size={32} src={`http://localhost:3000/api/file/${comment.author.profile_pic}`} />
                         </Media.Item>
                             <Media.Item align="center"  alignItems='center'> 
-                            
-                                
                                     <Heading size={6}>{comment.author.name_first} {comment.author.name_last}<small> @ {DateTime.fromISO(comment.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</small></Heading>
                                     <div style={{ whiteSpace: 'pre-wrap' }}>{comment.comment}</div>
-                                
-                                
-                             
                         </Media.Item>
-                        
                     </Media>
-                    
                     <Container display='flex' justifyContent='start'  alignItems='end' flexDirection='column'>
                         <small>{comment.likes.length} Likes</small>
                                     <Block/>
@@ -88,8 +81,3 @@ function Comment(props) {
 }
 
 export default Comment
-
-
-
-
-                                    //<div>{comment.comment}</div>

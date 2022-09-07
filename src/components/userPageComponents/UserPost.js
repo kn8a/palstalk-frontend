@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Block, Content, Box, Button, Form, Container, Heading } from 'react-bulma-components'
+import { Card, Block, Content, Box, Button, Form, Container, } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 
 import PostComments from '../PostComments'
 
-import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaEdit, FaTrash} from 'react-icons/fa'
+import {FaCommentAlt, FaThumbsDown, FaThumbsUp, } from 'react-icons/fa'
 
 function UserPost(props) {
     //Props
     const userId = localStorage.getItem('palstalkUserId')
     const token = props.token
-    const updatePosts = props.updatePosts
 
     //states
     const [post, setPost] = useState(props.post)
@@ -105,34 +104,12 @@ function UserPost(props) {
         toggleEditModal()
     }
 
-
-    //* delete post
-
-    const postDelete = () => {
-        const deleteURL = `http://localhost:3000/api/posts/${post._id}`
-        axios.delete(deleteURL, {headers: {"Authorization": `Bearer ${token}`}})
-        .then((response) => {
-            updatePosts()
-        })
-    }
-
-    const [delModal, setDelModal] = useState(null)
-    const toggleDelModal = () => {
-        if (!delModal) {
-            setDelModal('is-active')
-        } else {
-            setDelModal(null)
-        }
-        
-    }
-
   return (
     <div>
         <div>
             <Block>
             <Card>
                 <Card.Content>
-
                     <Content>
                     <div style={{ whiteSpace: 'pre-wrap' }}>
                         {post.content}
@@ -151,7 +128,6 @@ function UserPost(props) {
                     <Card.Footer.Item>
                         <a onClick={toggleCommentsModal}><FaCommentAlt/> Comments</a>
                     </Card.Footer.Item>
-                    
                 </Card.Footer>
             </Card>
             </Block>

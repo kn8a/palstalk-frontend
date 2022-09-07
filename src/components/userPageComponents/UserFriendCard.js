@@ -1,19 +1,10 @@
 import React from 'react'
+import {  Card, Media, Block, Heading, Container, Image } from 'react-bulma-components'
 
-import { Loader, Card, Media, Block, Button, Heading, Container, Image } from 'react-bulma-components'
-
-import axios from 'axios'
-import { toast } from 'react-toastify'
-import { Link, useNavigate } from 'react-router-dom'
 
 function UserFriendCard(props) {
   
-  const token = localStorage.getItem('palstalkToken')
-  const userId = localStorage.getItem('palstalkUserId')
-  const updateFriends = props.updateFriends
-
-
-  return (
+return (
     <Card style={{ width: 200, margin: 'auto' }} textAlign='center'>
       
       <Card.Content>
