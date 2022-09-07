@@ -1,6 +1,5 @@
 import React from 'react'
-import {Title, Subtitle, Content, MediaLeft, MediaContent, Image, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose} from 'bloomer'
-import { Loader, Card, Media, Block, Button, Heading  } from 'react-bulma-components'
+import { Loader, Card, Media, Block, Button, Heading, Content, Image,  } from 'react-bulma-components'
 import { Container } from 'bloomer/lib/layout/Container'
 import axios from 'axios'
 import { toast } from 'react-toastify'
@@ -37,7 +36,7 @@ function SentReqCard(props) {
         <Media justifyContent='center'>
           <Media.Item display='flex' justifyContent='center' renderAs="figure">
             <Image
-              isSize="96x96"
+              size={96}
               alt={`Picture of ${props.request.to.name_first} ${props.request.to.name_last}`}
               src={`http://localhost:3000/api/file/${props.request.to.profile_pic}`}
             />
