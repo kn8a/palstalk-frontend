@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Loader, Card, Media, Block, Button, Heading, Content, Image,  } from 'react-bulma-components'
-import { Container } from 'bloomer/lib/layout/Container'
+import { Loader, Card, Media, Block, Button, Heading, Content, Image, Container } from 'react-bulma-components'
+
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
