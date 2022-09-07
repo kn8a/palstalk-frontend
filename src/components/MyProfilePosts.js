@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import {Title, Subtitle, Content, MediaLeft, Button, MediaContent, Image, CardContent, CardFooterItem, TextArea, Control, Field} from 'bloomer'
 import { Loader, Card, Media, Block,   } from 'react-bulma-components'
 import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import Post from './Post'
 import { toast } from 'react-toastify'
