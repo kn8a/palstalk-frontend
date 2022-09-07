@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle, Content, Button, MediaLeft, MediaContent, Image, Delete, CardContent, CardFooterItem, card, Section, Column, Columns, Modal, ModalBackground, ModalContent, ModalClose, Box} from 'bloomer'
-import { Loader, Card, Media, Block,   } from 'react-bulma-components'
+import { Loader, Card, Media, Block, Heading, Button, Image, Columns, Container  } from 'react-bulma-components'
 import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
-import PostComments from './PostComments'
+
 import { toast } from 'react-toastify'
-import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaRegCommentAlt} from 'react-icons/fa'
+import { FaThumbsDown, FaThumbsUp, } from 'react-icons/fa'
 
 function Comment(props) {
     //Props
@@ -27,9 +25,9 @@ function Comment(props) {
     const alreadyLiked = comment.likes.indexOf(userId)
     useEffect(() => {
         if (alreadyLiked == -1) {
-            setLike(<Button isSize='small' isColor='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
+            setLike(<Button size='small' color='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
         } else {
-            setLike(<Button isSize='small' isColor='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
+            setLike(<Button size='small' color='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
         }
     },[])
 
@@ -40,7 +38,7 @@ function Comment(props) {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setComment(response.data)
-                setLike(<Button isSize='small' isColor='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
+                setLike(<Button size='small' color='warning' onClick={unlikeFn}><FaThumbsDown/>&nbsp;Unlike </Button>)
             })
             })
     }
@@ -52,7 +50,7 @@ function Comment(props) {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 setComment(response.data)
-                setLike(<Button isSize='small' isColor='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
+                setLike(<Button size='small' color='success' onClick={likeFn}><FaThumbsUp/>&nbsp;Like </Button>)
             })
             })
     }
@@ -61,29 +59,37 @@ function Comment(props) {
     <div>
             <Card>
                 
-                <CardContent>
+                <Card.Content display='flex' justifyContent='space-between'>
                     <Media>
-                        <MediaLeft>
-                            <Image isSize='32x32' src={`http://localhost:3000/api/file/${comment.author.profile_pic}`} />
-                        </MediaLeft>
-                        <MediaContent>
-                            <Columns is-centered >
-                                <Column hasTextAlign='left' isSize='3/4'>
-                                    <Title isSize={6}>{comment.author.name_first} {comment.author.name_last}<small> @ {DateTime.fromISO(comment.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</small></Title>
-                                    <div>{comment.comment}</div>
-                                </Column>
-                                <Column hasTextAlign='right'>
-                                    <small>{comment.likes.length} Likes</small>
+                        <Media.Item align="left">
+                            <Image size={32} src={`http://localhost:3000/api/file/${comment.author.profile_pic}`} />
+                        </Media.Item>
+                            <Media.Item align="center"  alignItems='center'> 
+                            
+                                
+                                    <Heading size={6}>{comment.author.name_first} {comment.author.name_last}<small> @ {DateTime.fromISO(comment.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</small></Heading>
+                                    <div style={{ whiteSpace: 'pre-wrap' }}>{comment.comment}</div>
+                                
+                                
+                             
+                        </Media.Item>
+                        
+                    </Media>
+                    
+                    <Container display='flex' justifyContent='start'  alignItems='end' flexDirection='column'>
+                        <small>{comment.likes.length} Likes</small>
                                     <Block/>
                                     <div>{like}</div>
-                                </Column>
-                            </Columns> 
-                        </MediaContent>
-                    </Media>
-                </CardContent>
+                    </Container>
+                </Card.Content>
             </Card>
     </div>
   )
 }
 
 export default Comment
+
+
+
+
+                                    //<div>{comment.comment}</div>
