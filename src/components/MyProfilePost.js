@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { CardContent, CardFooterItem, } from 'bloomer'
 import { Card, Block, Content, Box, Button, Form, Container, Heading } from 'react-bulma-components'
 import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import PostComments from './PostComments'
 
@@ -132,7 +130,7 @@ function MyProfilePost(props) {
         <div>
             <Block>
             <Card>
-                <CardContent>
+                <Card.Content>
 
                     <Content>
                     <div style={{ whiteSpace: 'pre-wrap' }}>
@@ -143,22 +141,22 @@ function MyProfilePost(props) {
                         <small>{post.likes.length} Likes</small> / <small>{post.comments.length} Comments</small>
                         <div className='help'>Posted on: {DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</div>   
                     </Content>
-                </CardContent>
-                <CardFooter>
-                    <CardFooterItem>
+                </Card.Content>
+                <Card.Footer>
+                    <Card.Footer.Item>
                         {like}
-                    </CardFooterItem>
+                    </Card.Footer.Item>
                     
-                    <CardFooterItem>
+                    <Card.Footer.Item>
                         <a onClick={toggleCommentsModal}><FaCommentAlt/> Comments</a>
-                    </CardFooterItem>
-                    <CardFooterItem>
+                    </Card.Footer.Item>
+                    <Card.Footer.Item>
                         <a onClick={toggleEditModal}><FaEdit/> Edit</a> 
-                    </CardFooterItem>
-                    <CardFooterItem>
+                    </Card.Footer.Item>
+                    <Card.Footer.Item>
                         <a onClick={toggleDelModal}><FaTrash/> Delete</a>
-                    </CardFooterItem>
-                </CardFooter>
+                    </Card.Footer.Item>
+                </Card.Footer>
             </Card>
             </Block>
         </div>
