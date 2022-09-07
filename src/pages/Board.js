@@ -1,13 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import axios from 'axios'
 import Posts from '../components/Posts'
-import Nav from '../components/Nav'
 import { Block } from 'react-bulma-components'
-import { Subtitle } from 'bloomer/lib/elements/Subtitle'
-
 
 function Board() {
 
