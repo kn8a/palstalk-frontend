@@ -3,7 +3,7 @@ import './App.css';
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
+
 import Nav from './components/Nav';
 
 //pages import

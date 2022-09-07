@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Loader, Card, Media, Block, Button, Columns, Content, Image, Heading,} from 'react-bulma-components'
+import { Card, Media, Block, Content, Image, Heading,} from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 import PostComments from './PostComments'
