@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import {Title, Subtitle,  MediaLeft, MediaContent, Image, CardContent, CardFooterItem,  Column,  } from 'bloomer'
-import { Loader, Card, Media, Block, Button, Columns, Content, } from 'react-bulma-components'
+import { Loader, Card, Media, Block, Button, Columns, Content, Image, Heading,} from 'react-bulma-components'
 import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
 import axios from 'axios'
 import PostComments from './PostComments'
 
@@ -80,19 +78,19 @@ function Post(props) {
         <div>
             <Block>
             <Card>
-                <CardContent>
+                <Card.Content>
                     <Media>
-                        <MediaLeft>
+                        <Media.Item align="left">
                             <Link to={`/users/${post.author._id}`}>
-                            <Image isSize='48x48' src={`http://localhost:3000/api/file/${post.author.profile_pic}`} />
+                            <Image size={48} src={`http://localhost:3000/api/file/${post.author.profile_pic}`} />
                             </Link>
-                        </MediaLeft>
-                        <MediaContent>
+                        </Media.Item>
+                        <Media.Item align="center">
                             <Link to={`/users/${post.author._id}`}>
-                            <Title isSize={5}>{post.author.name_first} {post.author.name_last}</Title>
+                            <Heading size={5}>{post.author.name_first} {post.author.name_last}</Heading>
                             </Link>
-                            <Subtitle isSize={6}>@{DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</Subtitle>
-                        </MediaContent>
+                            <Heading subtitle size={6}>@{DateTime.fromISO(post.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</Heading>
+                        </Media.Item>
                     </Media>
                     <Content>
                         <div style={{ whiteSpace: 'pre-wrap' }}>
@@ -104,15 +102,15 @@ function Post(props) {
                         <small>{post.comments.length} Comments</small>
                            
                     </Content>
-                </CardContent>
-                <CardFooter>
-                    <CardFooterItem>
+                </Card.Content>
+                <Card.Footer>
+                    <Card.Footer.Item>
                         {like}
-                    </CardFooterItem>
-                    <CardFooterItem>
+                    </Card.Footer.Item>
+                    <Card.Footer.Item>
                         <a onClick={toggleCommentsModal}><FaCommentAlt/> Comments</a>
-                    </CardFooterItem>
-                </CardFooter>
+                    </Card.Footer.Item>
+                </Card.Footer>
             </Card>
             </Block>
         </div>

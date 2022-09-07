@@ -177,7 +177,6 @@ function UserPage(props) {
         
     }, [friend, addFriendBtn, friendsModal, user])
 
-    
 
 return (<div>{content}</div>)
   
