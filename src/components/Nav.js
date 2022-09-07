@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaRegAddressCard, FaComments,  FaUser, FaSignOutAlt, FaUserFriends,  FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAddressBook} from 'react-icons/fa'
 import 'bulma/css/bulma.min.css';
-import { Container, Navbar, } from 'react-bulma-components';
-import { Title } from 'bloomer';
+import { Container, Navbar, Heading } from 'react-bulma-components';
+
 
 
 function Nav(props) {
@@ -34,7 +34,7 @@ function Nav(props) {
             <Navbar.Brand id='logo' display='flex' alignItems='center' justifyContent='left'>
             <Link to={'/'}>
             <Navbar.Item href="#">
-              <Title id='logo-text' isSize={3} >sweetnook</Title>
+              <Heading id='logo-text' size={3} >sweetnook</Heading>
               
               
             </Navbar.Item>
