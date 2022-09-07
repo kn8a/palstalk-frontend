@@ -1,8 +1,5 @@
 import React, { useState } from 'react'
-import {Title, Subtitle, Content, MediaLeft, Button, MediaContent, Image, CardContent, CardFooterItem, TextArea, Control, Field} from 'bloomer'
-import { Loader, Card, Media, Block,   } from 'react-bulma-components'
-import { DateTime } from 'luxon'
-import { CardFooter } from 'bloomer/lib/components/Card/Footer/CardFooter'
+import { Loader, Card, Media, Block,Button, Form, Image, Heading} from 'react-bulma-components'
 import axios from 'axios'
 import Post from './Post'
 import { toast } from 'react-toastify'
@@ -24,7 +21,6 @@ function Posts(props) {
         setNewPost(e.target.value)
     }
 
-
     const submitNewPost = () => {
         const postToSubmit = {
             content: newPost,
@@ -36,41 +32,36 @@ function Posts(props) {
             toast.success('Posted')
             setNewPost('')
         })
-
-
     }
 
   return (
     <div>
             <Block>
                 <Card>
-                    <CardContent><Subtitle hasTextAlign='centered'>What's on your mind?</Subtitle>
+                    <Card.Content><Heading subtitle textAlign={'center'}>What's on your mind?</Heading>
                     <Media>
-                        <MediaLeft>
-                            <Image isSize='64x64' src={`http://localhost:3000/api/file/${profilePic}`} />
-                        </MediaLeft>
-                        <MediaContent>  
-                            <Field>
-                                <Control>
-                                    <TextArea onChange={(e) => onChange(e)} value={newPost} rows='3' placeholder={'Say something...'} />  
-                                </Control>
-                            </Field>
-                            <Field isGrouped='right'>
-                                <Control>
+                        <Media.Item align="left">
+                            <Image size={64} src={`http://localhost:3000/api/file/${profilePic}`} />
+                        </Media.Item>
+                        <Media.Item align="center">  
+                            <Form.Field>
+                                <Form.Control>
+                                    <Form.Textarea onChange={(e) => onChange(e)} value={newPost} rows='3' placeholder={'Say something...'} />  
+                                </Form.Control>
+                            </Form.Field>
+                            <Form.Field kind='group' justifyContent='right'>
+                                <Form.Control>
                                     <small>{`Posting as ${profileName} `}</small>
-                                </Control>
-                                
-                                <Control>
-                                    <Button onClick={submitNewPost}  isColor='info'>Post</Button>
-                                </Control>
-                            </Field>   
-                        </MediaContent>
+                                </Form.Control>
+                                <Form.Control>
+                                    <Button onClick={submitNewPost} color='info'>Post</Button>
+                                </Form.Control>
+                            </Form.Field>   
+                            </Media.Item>
                     </Media>
-                    </CardContent>
+                    </Card.Content>
                 </Card>
-
                 </Block>
-
         <div>
 
         {props.posts.map((post)=> {
@@ -79,15 +70,11 @@ function Posts(props) {
             <Block key={post._id}>
                 <Post post={post} token={token} userId={props.userId}/>
             </Block>
-            
         )
         })}
         </div>
-        
     </div>
   )
 }
 
 export default Posts
-
-//<Post post={post}p/>
