@@ -8,7 +8,7 @@ import { Block } from 'react-bulma-components'
 function Board() {
 
     const navigate = useNavigate()
-    const postsURL = `http://localhost:3000/api/posts/board`
+    const postsURL = `${process.env.REACT_APP_API_URL}/posts/board`
 
     //states
     const [posts, setPosts] = useState()

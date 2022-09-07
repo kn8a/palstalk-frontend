@@ -13,7 +13,7 @@ function UserPage(props) {
 
     const token = localStorage.getItem('palstalkToken')
     const params = useParams()
-    const userURL = `http://localhost:3000/api/users/${params.userId}`
+    const userURL = `${process.env.REACT_APP_API_URL}/users/${params.userId}`
     const [user, setUser] = useState({
         name_first: '',
         name_last:'',
@@ -35,7 +35,7 @@ function UserPage(props) {
 
     
     const sendFriendRequest = (id) => {
-        const addFriendURL = `http://localhost:3000/api/users/${user._id}/send-friend-request`
+        const addFriendURL = `${process.env.REACT_APP_API_URL}/users/${user._id}/send-friend-request`
         axios.post(addFriendURL,'', {headers: {"Authorization": `Bearer ${token}`}})
         .then(()=> {
           //updateUsers()
@@ -93,7 +93,7 @@ function UserPage(props) {
 
                     <Columns>
                         <Columns.Column size={4} display={'flex'} justifyContent='center' alignItems='center' flexDirection='column'>
-                            <Image size={128} src={`http://localhost:3000/api/file/${user.profile_pic}`}></Image>
+                            <Image size={128} src={`${process.env.REACT_APP_API_URL}/file/${user.profile_pic}`}></Image>
                             <Block></Block>
                             <Heading textAlign={'center'} alignItems={'flex-end'}>{`${user.name_first} ${user.name_last}`}</Heading>
                             <Button onClick={toggleFriendsModal}>{`View ${user.name_first}'s friends`}</Button>
@@ -144,7 +144,7 @@ function UserPage(props) {
 
                     <Columns>
                         <Columns.Column size={4} display={'flex'} justifyContent='center' alignItems='center' flexDirection='column'>
-                            <Image size={128} src={`http://localhost:3000/api/file/${user.profile_pic}`}></Image>
+                            <Image size={128} src={`${process.env.REACT_APP_API_URL}/file/${user.profile_pic}`}></Image>
                             <Block></Block>
                             <Heading textAlign={'center'} alignItems={'flex-end'}>{`${user.name_first} ${user.name_last}`}</Heading>
                             <Button onClick={toggleFriendsModal}>{`View ${user.name_first}'s friends`}</Button>

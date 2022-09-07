@@ -19,9 +19,9 @@ function UserPost(props) {
     const [postContent,setPostContent] = useState(props.post.content)
 
     //API URLS
-    const postURL = `http://localhost:3000/api/posts/${post._id}`
-    const likeURL = `http://localhost:3000/api/posts/${post._id}/like`
-    const unlikeURL = `http://localhost:3000/api/posts/${post._id}/unlike`
+    const postURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
+    const likeURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}/like`
+    const unlikeURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}/unlike`
     
     //check if user liked current post
     
@@ -91,7 +91,7 @@ function UserPost(props) {
     }
 
     const submitEdit = () => {
-        const postUpdateURL = `http://localhost:3000/api/posts/${post._id}`
+        const postUpdateURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
         axios.put(postUpdateURL, {content: postContent}, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response) => {
             updatePost()

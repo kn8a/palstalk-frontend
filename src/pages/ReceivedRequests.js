@@ -5,7 +5,7 @@ import ReqRecCard from '../components/RecReqCard'
 
 function ReceivedRequests() {
 
-  const receivedURL = 'http://localhost:3000/api/requests/received'
+  const receivedURL = `${process.env.REACT_APP_API_URL}/requests/received`
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   

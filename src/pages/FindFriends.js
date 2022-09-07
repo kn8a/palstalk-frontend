@@ -6,7 +6,7 @@ import PendingFriendCard from '../components/PendingFriendCard'
 
 function FindFriends() {
 
-  const allUsersURL = 'http://localhost:3000/api/users/all'
+  const allUsersURL = `${process.env.REACT_APP_API_URL}/users/all`
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   

@@ -6,7 +6,7 @@ import UserCard from '../components/UserCard'
 
 function Friends() {
 
-  const profileURL = 'http://localhost:3000/api/users/profile'
+  const profileURL = `${process.env.REACT_APP_API_URL}/users/profile`
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   

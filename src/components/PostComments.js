@@ -16,7 +16,7 @@ function PostComments (props) {
     const profileName = localStorage.getItem('palstalkUserName')
     //console.log(profilePic)
     const [comments, setComments] = useState([])
-    const commentsURL = `http://localhost:3000/api/posts/${postId}/comments`
+    const commentsURL = `${process.env.REACT_APP_API_URL}/posts/${postId}/comments`
     const [newComment, setNewComment] = useState('')
     const updatePost = props.updatePost
     
@@ -63,7 +63,7 @@ function PostComments (props) {
                     <Card.Content>
                     <Media>
                         <Media.Item align="left">
-                            <Image size={64} src={`http://localhost:3000/api/file/${profilePic}`} />
+                            <Image size={64} src={`${process.env.REACT_APP_API_URL}/file/${profilePic}`} />
                         </Media.Item>
                         <Media.Item align="center"> 
                             <Form.Field>

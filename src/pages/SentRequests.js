@@ -5,7 +5,7 @@ import SentReqCard from '../components/SentRecCard'
 
 function SentRequests() {
 
-  const sentURL = 'http://localhost:3000/api/requests/sent'
+  const sentURL = `${process.env.REACT_APP_API_URL}/requests/sent`
   const token = localStorage.getItem('palstalkToken')
   const userId = localStorage.getItem('palstalkUserId')
   

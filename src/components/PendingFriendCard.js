@@ -17,7 +17,7 @@ function PendingFriendCard(props) {
             <Image
               size={128}
               alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}
-              src={`http://localhost:3000/api/file/${props.user.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.user.profile_pic}`}
             />
           </Media.Item>
           

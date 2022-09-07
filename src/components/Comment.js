@@ -17,9 +17,9 @@ function Comment(props) {
     const [like, setLike] = useState()
     
     //API URLS
-    const commentURL = `http://localhost:3000/api/posts/${postId}/${comment._id}`
-    const likeURL = `http://localhost:3000/api/posts/${postId}/${comment._id}/like`
-    const unlikeURL = `http://localhost:3000/api/posts/${postId}/${comment._id}/unlike`
+    const commentURL = `${process.env.REACT_APP_API_URL}/posts/${postId}/${comment._id}`
+    const likeURL = `${process.env.REACT_APP_API_URL}/posts/${postId}/${comment._id}/like`
+    const unlikeURL = `${process.env.REACT_APP_API_URL}/posts/${postId}/${comment._id}/unlike`
     
     //check if comment already liked by this user
     const alreadyLiked = comment.likes.indexOf(userId)
@@ -62,7 +62,7 @@ function Comment(props) {
                 <Card.Content display='flex' justifyContent='space-between'>
                     <Media>
                         <Media.Item align="left">
-                            <Image size={32} src={`http://localhost:3000/api/file/${comment.author.profile_pic}`} />
+                            <Image size={32} src={`${process.env.REACT_APP_API_URL}/file/${comment.author.profile_pic}`} />
                         </Media.Item>
                             <Media.Item align="center"  alignItems='center'> 
                                     <Heading size={6}>{comment.author.name_first} {comment.author.name_last}<small> @ {DateTime.fromISO(comment.createdAt).toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS)}</small></Heading>

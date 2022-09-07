@@ -13,7 +13,7 @@ function UserCard(props) {
   const updateFriends = props.updateFriends
 
   const unfriend = (id) => {
-    const unfriendURL = `http://localhost:3000/api/users/${props.friend._id}/unfriend`
+    const unfriendURL = `${process.env.REACT_APP_API_URL}/users/${props.friend._id}/unfriend`
     axios.put(unfriendURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       updateFriends()
@@ -30,7 +30,7 @@ function UserCard(props) {
             <Image
               size={96}
               alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}
-              src={`http://localhost:3000/api/file/${props.friend.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.friend.profile_pic}`}
             />
           </Media.Item>
           

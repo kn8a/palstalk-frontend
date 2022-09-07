@@ -13,7 +13,7 @@ return (
             <Image
               size={96}
               alt={`Picture of ${props.friend.name_first} ${props.friend.name_last}`}
-              src={`http://localhost:3000/api/file/${props.friend.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.friend.profile_pic}`}
             />
           </Media.Item>
           

@@ -8,7 +8,7 @@ function Posts(props) {
     const token = props.token
     const profilePic = localStorage.getItem('palstalkUserPic')
     const profileName = localStorage.getItem('palstalkUserName')
-    const postSubmitURL = `http://localhost:3000/api/posts`
+    const postSubmitURL = `${process.env.REACT_APP_API_URL}/posts`
     const updatePosts = props.updatePosts
 
     const [newPost, setNewPost] = useState()
@@ -41,7 +41,7 @@ function Posts(props) {
                     <Card.Content><Heading subtitle textAlign={'center'}>What's on your mind?</Heading>
                     <Media>
                         <Media.Item align="left">
-                            <Image size={64} src={`http://localhost:3000/api/file/${profilePic}`} />
+                            <Image size={64} src={`${process.env.REACT_APP_API_URL}/file/${profilePic}`} />
                         </Media.Item>
                         <Media.Item align="center">  
                             <Form.Field>

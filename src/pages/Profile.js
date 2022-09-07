@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Heading, Button, Box,  Form, Block, Container, Image, Content } from 'react-bulma-components'
+import { Heading, Button, Box,  Form, Block, Container, Image, Content, } from 'react-bulma-components'
 import MyProfilePosts from '../components/MyProfilePosts'
 import { FaUpload, FaCheck, FaUserEdit } from 'react-icons/fa'
 
@@ -10,8 +10,8 @@ function Profile(props) {
   //const profilePic = localStorage.getItem('palstalkUserPic')
   const profileName = localStorage.getItem('palstalkUserName')
   const token = localStorage.getItem('palstalkToken')
-  const ProfileURL = `http://localhost:3000/api/users/profile`
-  const profileUpdateURL = 'http://localhost:3000/api/users/update'
+  const ProfileURL = `${process.env.REACT_APP_API_URL}/users/profile`
+  const profileUpdateURL = `${process.env.REACT_APP_API_URL}/users/update`
 
   const [user,setUser] = useState({
     name_first: '',
@@ -94,7 +94,7 @@ function Profile(props) {
    
   const updateProfilePic = (e) => {
     const data = file
-    axios.post("http://localhost:3000/api/users/upload", data, {
+    axios.post(`${process.env.REACT_APP_API_URL}/users/upload`, data, {
       headers: {
         "Content-Type": "multipart/form-data", "Authorization": `Bearer ${token}`
       },
@@ -129,7 +129,7 @@ function Profile(props) {
     //Adding files to the formdata
     formData.append("profile_pic", file);
 
-    axios.post("http://localhost:3000/api/users/upload", formData, {headers: {"Content-Type": "multipart/form-data", "Authorization": `Bearer ${token}`}})
+    axios.post(`${process.env.REACT_APP_API_URL}/users/upload`, formData, {headers: {"Content-Type": "multipart/form-data", "Authorization": `Bearer ${token}`}})
       .then((response)=>{
         axios.get(ProfileURL, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response) => {
@@ -145,7 +145,7 @@ function Profile(props) {
   }
 
   //* posts
-  const postsURL = `http://localhost:3000/api/posts/my_posts`
+  const postsURL = `${process.env.REACT_APP_API_URL}/posts/my_posts`
 
   const [posts, setPosts] = useState()
 
@@ -175,7 +175,7 @@ const updatePosts = () => {
  
     <Box>
     <Heading size={5}> My profile Image</Heading>
-    <Image size={128} src={`http://localhost:3000/api/file/${user.profile_pic}`}></Image>
+    <Image size={128} src={`${process.env.REACT_APP_API_URL}/file/${user.profile_pic}`}></Image>
     <Block></Block>
     <div class="file has-name is-fullwidth is-info boxed">
       <label class="file-label">
@@ -353,7 +353,11 @@ const updatePosts = () => {
         </div>
 
 
+        
+        
           
+        
+      
     </div>
   )
 }

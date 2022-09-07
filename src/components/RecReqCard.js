@@ -11,7 +11,7 @@ function ReqRecCard(props) {
   const updateRequests = props.updateRequests
 
   const accept = (id) => {
-    const acceptURL = `http://localhost:3000/api/requests/${props.request._id}/accept`
+    const acceptURL = `${process.env.REACT_APP_API_URL}/requests/${props.request._id}/accept`
     axios.put(acceptURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       updateRequests()
@@ -20,7 +20,7 @@ function ReqRecCard(props) {
   }
 
   const decline = (id) => {
-    const declineURL = `http://localhost:3000/api/requests/${props.request._id}/decline`
+    const declineURL = `${process.env.REACT_APP_API_URL}/requests/${props.request._id}/decline`
     axios.put(declineURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       updateRequests()
@@ -37,7 +37,7 @@ function ReqRecCard(props) {
             <Image
               size={128}
               alt={`Picture of ${props.request.from.name_first} ${props.request.from.name_last}`}
-              src={`http://localhost:3000/api/file/${props.request.from.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.request.from.profile_pic}`}
             />
           </Media.Item>
           

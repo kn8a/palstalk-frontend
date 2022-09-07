@@ -24,8 +24,8 @@ function Login() {
     })
     
 
-    const loginURL = 'http://localhost:3000/api/users/login'
-    const registerURL = 'http://localhost:3000/api/users/register'
+    const loginURL = `${process.env.REACT_APP_API_URL}/users/login`
+    const registerURL = `${process.env.REACT_APP_API_URL}/users/register`
 
     const navigate = useNavigate()
 

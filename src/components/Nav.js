@@ -70,7 +70,7 @@ function Nav(props) {
                     <div class="navbar-dropdown is-boxed">
                     
                     <Link to="/friends" class="navbar-item"> 
-                        <Container display='flex' alignContent='center' justifyContent='space-between'><div><FaUserFriends/>&nbsp;My friends</div> <div>8</div></Container>
+                        <div><FaUserFriends/>&nbsp;My friends</div>
                     </Link>
                     <hr class="navbar-divider"/>
                     <Link to="/friends/received" class="navbar-item">

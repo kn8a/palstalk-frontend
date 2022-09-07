@@ -9,7 +9,7 @@ function NonFriendCard(props) {
   const token = localStorage.getItem('palstalkToken')
   const [disabled, setDisabled] = useState(false)
   const sendFriendRequest = (id) => {
-    const addFriendURL = `http://localhost:3000/api/users/${props.user._id}/send-friend-request`
+    const addFriendURL = `${process.env.REACT_APP_API_URL}/users/${props.user._id}/send-friend-request`
     axios.post(addFriendURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       //updateUsers()
@@ -26,7 +26,7 @@ function NonFriendCard(props) {
             <Image
               size={128}
               alt={`Picture of ${props.user.name_first} ${props.user.name_last}`}
-              src={`http://localhost:3000/api/file/${props.user.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.user.profile_pic}`}
             />
           </Media.Item>
         </Media>

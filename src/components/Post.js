@@ -18,9 +18,9 @@ function Post(props) {
     const [commentsModal, setCommentsModal] = useState('')
 
     //API URLS
-    const postURL = `http://localhost:3000/api/posts/${post._id}`
-    const likeURL = `http://localhost:3000/api/posts/${post._id}/like`
-    const unlikeURL = `http://localhost:3000/api/posts/${post._id}/unlike`
+    const postURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
+    const likeURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}/like`
+    const unlikeURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}/unlike`
     
     //check if user liked current post
     const alreadyLiked = post.likes.indexOf(userId)
@@ -82,7 +82,7 @@ function Post(props) {
                     <Media>
                         <Media.Item align="left">
                             <Link to={`/users/${post.author._id}`}>
-                            <Image size={48} src={`http://localhost:3000/api/file/${post.author.profile_pic}`} />
+                            <Image size={48} src={`${process.env.REACT_APP_API_URL}/file/${post.author.profile_pic}`} />
                             </Link>
                         </Media.Item>
                         <Media.Item align="center">

@@ -12,7 +12,7 @@ function SentReqCard(props) {
   const updateRequests = props.updateRequests
 
   const accept = (id) => {
-    const acceptURL = `http://localhost:3000/api/requests/${props.request._id}/accept`
+    const acceptURL = `${process.env.REACT_APP_API_URL}/requests/${props.request._id}/accept`
     axios.put(acceptURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       updateRequests()
@@ -21,7 +21,7 @@ function SentReqCard(props) {
   }
 
   const cancel = (id) => {
-    const cancelURL = `http://localhost:3000/api/requests/${props.request._id}/cancel`
+    const cancelURL = `${process.env.REACT_APP_API_URL}/requests/${props.request._id}/cancel`
     axios.put(cancelURL,'', {headers: {"Authorization": `Bearer ${token}`}})
     .then(()=> {
       updateRequests()
@@ -38,7 +38,7 @@ function SentReqCard(props) {
             <Image
               size={96}
               alt={`Picture of ${props.request.to.name_first} ${props.request.to.name_last}`}
-              src={`http://localhost:3000/api/file/${props.request.to.profile_pic}`}
+              src={`${process.env.REACT_APP_API_URL}/file/${props.request.to.profile_pic}`}
             />
           </Media.Item>
           

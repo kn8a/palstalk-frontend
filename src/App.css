@@ -61,6 +61,11 @@
   font-family: 'Caveat', cursive;
 }
 
+.logo-text {
+  color: #AA1945;
+  font-family: 'Caveat', cursive;
+}
+
 #friends-container {
   row-gap: 14px;
 
@@ -89,4 +94,17 @@ ul {
             border-left: 1px solid rgb(230, 230, 230);
 
 
+}
+
+.footer {
+  border-radius: 2rem;
+padding: 0;
+}
+
+.develop-icons {
+  vertical-align:top;
+}
+
+.react-icons {
+  
 }
