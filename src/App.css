@@ -66,6 +66,10 @@
 
 }
 
+.user-friends {
+  gap: 10px;
+}
+
 .friends-container {
   row-gap: 14px;
   

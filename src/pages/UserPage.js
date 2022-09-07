@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {  } from 'bloomer/lib/elements/Button'
 import React, { useEffect, useState } from 'react'
-import { Block, Columns, Image, Heading, Container, Tabs, Button, Box } from 'react-bulma-components'
+import { Block, Columns, Image, Heading, Container, Tabs, Button, Box, } from 'react-bulma-components'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loader'
@@ -15,9 +15,12 @@ function UserPage(props) {
     const token = localStorage.getItem('palstalkToken')
     const params = useParams()
     const userURL = `http://localhost:3000/api/users/${params.userId}`
-    const [user, setUser] = useState({friends:[]})
-    const [friend, setFried] = useState()
-    const [content,setContent] = useState()
+    const [user, setUser] = useState({
+        name_first: '',
+        name_last:'',
+        friends:[]})
+    const [friend, setFried] = useState('')
+    const [content,setContent] = useState(<Loader/>)
 
         
     useEffect(()=>{
@@ -41,7 +44,7 @@ function UserPage(props) {
           toast.info(`Sent friend request to ${user.name_first} ${user.name_last}`)
         })
         .catch((err) => {
-            console.log(err)
+            //console.log(err)
             toast.error(err.response.data.message)
         })
         setAddFriendBtn(true)
@@ -59,12 +62,13 @@ function UserPage(props) {
 
 
     useEffect(()=>{
-        if (!user) {
+        if (!user || friend == '') {
             setContent(<Loader/>)
+            
         }
 
-        
 
+        //console.log(friend)
 
         if (friend) {
             setContent(
@@ -76,11 +80,11 @@ function UserPage(props) {
                             <div className="modal-content">
                                 <Box>
                                 <Heading subtitle size={5} textAlign='center'>{`${user.name_first}'s friends`}</Heading>
-                                <Container display='flex' justifyContent='space-evenly' className='friends-container'>
+                                <Block display='flex' justifyContent='space-evenly' className='friends-container user-friends' flexWrap='wrap'>
                                     {user.friends.map((friend) => {
                                         return (<div key={friend._id}><UserFriendCard toggleModal={toggleFriendsModal} friend={friend}></UserFriendCard></div>)
                                     })}
-                                    </Container>
+                                </Block>
                                     
                                 </Box>
                             </div>
@@ -117,8 +121,9 @@ function UserPage(props) {
 
                 </div>
             )
-        } else {
-            //console.log(user)
+        } 
+        if (friend == false) {
+            //console.log(friend)
             setContent(
                 <div>
                     <Block></Block>
@@ -127,11 +132,11 @@ function UserPage(props) {
                             <div className="modal-content">
                                 <Box>
                                     <Heading subtitle size={5} textAlign='center'>{`${user.name_first}'s friends`}</Heading>
-                                <Container display='flex' justifyContent='space-evenly' className='friends-container'>
+                                <Block display='flex' justifyContent='space-evenly' className='friends-container user-friends' flexWrap='wrap'>
                                     {user.friends.map((friend) => {
                                         return (<div key={friend._id}><UserFriendCard toggleModal={toggleFriendsModal} friend={friend}></UserFriendCard></div>)
                                     })}
-                                    </Container>
+                                    </Block>
                                 </Box>
                             </div>
                         <button onClick={toggleFriendsModal} className="modal-close is-large" aria-label="close"></button>
@@ -168,7 +173,9 @@ function UserPage(props) {
                 </div>
               )
         }
-    }, [friend, addFriendBtn, friendsModal])
+
+        
+    }, [friend, addFriendBtn, friendsModal, user])
 
     
 

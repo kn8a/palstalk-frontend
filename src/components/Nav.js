@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaRegAddressCard, FaComments,  FaUser, FaSignOutAlt, FaUserFriends,  FaArrowAltCircleLeft, FaArrowAltCircleRight, FaAddressBook} from 'react-icons/fa'
 import 'bulma/css/bulma.min.css';
-import { Navbar, } from 'react-bulma-components';
+import { Container, Navbar, } from 'react-bulma-components';
 import { Title } from 'bloomer';
 
 
@@ -64,11 +64,13 @@ function Nav(props) {
 
                 <div className="navbar-item has-dropdown is-boxed is-hoverable">
                     <a class="navbar-link">
-                    <FaUserFriends/> <strong>&nbsp;Friends</strong>
+                    
+                    <FaUserFriends/> <strong>&nbsp;Friends</strong> 
                     </a>
                     <div class="navbar-dropdown is-boxed">
-                    <Link to="/friends" class="navbar-item">
-                        <FaUserFriends/>&nbsp;My friends
+                    
+                    <Link to="/friends" class="navbar-item"> 
+                        <Container display='flex' alignContent='center' justifyContent='space-between'><div><FaUserFriends/>&nbsp;My friends</div> <div>8</div></Container>
                     </Link>
                     <hr class="navbar-divider"/>
                     <Link to="/friends/received" class="navbar-item">
