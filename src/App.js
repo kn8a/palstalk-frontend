@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import {ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { BrowserRouter as Router,Routes, Route} from 'react-router-dom'
+//BrowserRouter as Router,
+//import { HashRouter as Router } from 'react-router-dom'
+
 
 import Nav from './components/Nav';
 
@@ -56,7 +59,8 @@ function App() {
 
   return (
     <div className='container is-max-desktop'>
-    <Router>
+
+    <Router basename='/sweetnook'>
 
     
     <Hero size="fullheight" style={{ width: '100%' }}>
@@ -67,6 +71,7 @@ function App() {
     </Hero.Header>
     
     <Routes>
+        <Route path='/sweetnook' elementelement={<Board loggedIn={loggedIn}/>} />
         <Route path='/login' element={<Login setLogin={login}/>} />
         <Route path='/' element={<Board loggedIn={loggedIn}/>} />
         <Route path='/profile' element={<Profile loggedIn={loggedIn}/>} />
