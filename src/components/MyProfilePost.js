@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Block, Content, Box, Button, Form, Container, Heading } from 'react-bulma-components'
+import { Card, Block, Content, Box, Button, Form, Container, Heading, Loader } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 import PostComments from './PostComments'
@@ -44,6 +44,7 @@ function MyProfilePost(props) {
 
     //like and switch like to unlike after click
     const likeFn = () => {
+        setLike(<Loader/>)
         axios.put(likeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
@@ -56,6 +57,7 @@ function MyProfilePost(props) {
 
     //unlike and switch unlike to like after click
     const unlikeFn = () => {
+        setLike(<Loader/>)
         axios.put(unlikeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})

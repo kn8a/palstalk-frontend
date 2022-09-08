@@ -28,6 +28,11 @@ import {DiNodejsSmall, DiReact, DiMongodb, DiHtml5, DiCss3, DiJavascript1, DiGit
 function App() {
 
   const [apiConnected, setApiConnected] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  const login = () => {
+    setLoggedIn(true)
+  }
 
   useEffect (()=> {
     const pingURL = process.env.REACT_APP_API_URL + '/ping'
@@ -53,23 +58,25 @@ function App() {
     <div className='container is-max-desktop'>
     <Router>
 
-    <Nav/>
+    
     <Hero size="fullheight" style={{ width: '100%' }}>
-    <Hero.Header renderAs="header">
+    <Hero.Header>
       
     
-      <Routes>
-        <Route path='/login' element={<Login/>} />
-        <Route path='/' element={<Board/>} />
-        <Route path='/profile' element={<Profile/>} />
-        <Route path='/friends' element={<Friends/>} />
-        <Route path='/friends/find' element={<FindFriends/>} />
-        <Route path='/friends/sent' element={<SentRequests/>} />
-        <Route path='/friends/received' element={<ReceivedRequests/>} />
-        <Route path='/users/:userId' element={<UserPage/>}/>
-      </Routes>
+      
     </Hero.Header>
-    <Hero.Body></Hero.Body>
+    
+    <Routes>
+        <Route path='/login' element={<Login setLogin={login}/>} />
+        <Route path='/' element={<Board loggedIn={loggedIn}/>} />
+        <Route path='/profile' element={<Profile loggedIn={loggedIn}/>} />
+        <Route path='/friends' element={<Friends loggedIn={loggedIn}/>} />
+        <Route path='/friends/find' element={<FindFriends loggedIn={loggedIn}/>} />
+        <Route path='/friends/sent' element={<SentRequests loggedIn={loggedIn}/>} />
+        <Route path='/friends/received' element={<ReceivedRequests loggedIn={loggedIn}/>} />
+        <Route path='/users/:userId' element={<UserPage loggedIn={loggedIn}/>}/>
+      </Routes>
+      <Hero.Body></Hero.Body>
       
         <Footer className='footer' display='flex' justifyContent='space-between' alignContent='center' alignItems='center'>
           <div>
@@ -96,7 +103,7 @@ function App() {
               
             </Content>
           </div>
-
+          
         </Footer>
         
       

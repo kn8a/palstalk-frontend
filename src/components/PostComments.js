@@ -20,6 +20,8 @@ function PostComments (props) {
     const [newComment, setNewComment] = useState('')
     const updatePost = props.updatePost
     
+    const [commentLoading, setCommentLoading] = useState(false)
+    
     useEffect(()=>{
         axios.get(commentsURL, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response)=>{
@@ -27,11 +29,18 @@ function PostComments (props) {
         })
     },[])
 
+
     const onChange = (e) => {
         setNewComment(e.target.value)
     }
 
     const submitNewComment = () => {
+        setCommentLoading(true)
+        if (!newComment) {
+            toast.error('Comment field is empty')
+            setCommentLoading(false)
+            return
+        }
         const commentToSubmit = {
             comment: newComment,
             author: userId,
@@ -45,14 +54,18 @@ function PostComments (props) {
                 toast.success('Comment posted')
                 setNewComment('')
                 updatePost()
+                setCommentLoading(false)
             })
             .catch((err) => {
                 toast.error("Comment posted but didn't update. Please refresh the page.")
+                setCommentLoading(false)
             })
         })
         .catch((err) => {
             toast.error("Comment didn't post. Please retry.")
+            setCommentLoading(false)
         })
+        
     }
 
   return (
@@ -68,7 +81,7 @@ function PostComments (props) {
                         <Media.Item align="center"> 
                             <Form.Field>
                                 <Form.Control>
-                                    <Form.Textarea onChange={(e) => onChange(e)} value={newComment} rows='2' placeholder={'Enter your comment'} />  
+                                    <Form.Textarea required onChange={(e) => onChange(e)} value={newComment} rows='2' placeholder={'Enter your comment'} />  
                                 </Form.Control>
                             </Form.Field>
                             <Form.Field kind='group' justifyContent='right'>
@@ -77,7 +90,7 @@ function PostComments (props) {
                                 </Form.Control>
                                 
                                 <Form.Control>
-                                    <Button onClick={submitNewComment} size='small' color='info'>Comment</Button>
+                                    <Button onClick={submitNewComment} size='small' loading={commentLoading} color='info'>Comment</Button>
                                 </Form.Control>
                             </Form.Field>   
                         </Media.Item>

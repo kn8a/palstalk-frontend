@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Media, Block, Heading, Button, Image,  Container  } from 'react-bulma-components'
+import { Card, Media, Block, Heading, Button, Image,  Container , Loader } from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 
@@ -33,6 +33,7 @@ function Comment(props) {
 
     //switch like to unlike after click
     const likeFn = () => {
+        setLike(<Button size='small' color='success' loading>Liking</Button>)
         axios.put(likeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})
@@ -45,6 +46,7 @@ function Comment(props) {
 
     //switch unlike to like after click
     const unlikeFn = () => {
+        setLike(<Button size='small' color='warning' loading>Unliking</Button>)
         axios.put(unlikeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(commentURL, {headers: {"Authorization": `Bearer ${token}`}})

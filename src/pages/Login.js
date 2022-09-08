@@ -3,10 +3,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
-import {Form} from 'react-bulma-components'
+import {Block, Columns, Container, Content, Form, Box} from 'react-bulma-components'
 
 
-function Login() {
+function Login(props) {
 
     const [credentials, setCredentials] = useState({
         email:'',
@@ -35,6 +35,7 @@ function Login() {
         axios.post(loginURL, credentials)
         .then( (response) => {
             if (response.data.token) {
+                props.setLogin()
                 //console.log(response.data.token)
                 localStorage.setItem('palstalkToken', response.data.token)
                 localStorage.setItem('palstalkUserId', response.data.id)
@@ -52,6 +53,33 @@ function Login() {
             toast.error(error.response.data.message)
         })
     }
+
+    const demoLogin = (e) => {
+        setLoginBtnState('is-loading')
+        e.preventDefault() 
+        const demoCredentials = {email: process.env.REACT_APP_DEMO_EMAIL, password: process.env.REACT_APP_DEMO_PASS}
+        axios.post(loginURL, demoCredentials)
+        .then( (response) => {
+            if (response.data.token) {
+                props.setLogin()
+                //console.log(response.data.token)
+                localStorage.setItem('palstalkToken', response.data.token)
+                localStorage.setItem('palstalkUserId', response.data.id)
+                localStorage.setItem('palstalkUserPic', response.data.profile_pic)
+                const userName = response.data.name_first + ' ' + response.data.name_last
+                localStorage.setItem('palstalkUserName', userName)
+                setCredentials({email:'', password:''})
+                toast.success('Logged in')
+                navigate('/')
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            setLoginBtnState('')
+            toast.error(error.response.data.message)
+        })
+    }
+    
 
     const register = (e) => {
         setRegBtnState('is-loading')
@@ -107,15 +135,33 @@ function Login() {
     }
 
   return (
-    <div>
+    <div className='login-main'>
+        <Block></Block>
         
-        <form onSubmit={login}>Login
+        <Box>
+        <Columns>
+            <Columns.Column>
+                <Container display='flex' justifyContent='center' alignItems='center'>
+                    <Container display='flex' flexDirection='column' justifyContent='center' textAlign={'center'}>
+                        <div className='login-large-logo'>sweetnook</div>
+                        <p>Where friends meet and share.</p>
+                    </Container>
+                </Container>
+            </Columns.Column>
+            <div className="divider is-vertical">Login<Block></Block></div>
+            <Columns.Column>
+                <Container display='flex' flexDirection='column'>
+                <form onSubmit={login}>
             <input className="input" required onChange={onChange} value={credentials.email} name='email' type="email" placeholder="example@email.com"/>
             <input className="input" required onChange={onChange} value={credentials.password} name='password' type="password" placeholder="*********"/>
             <button className={`button is-info ${loginBtnState}`}>Login</button>
         </form>
         <div className="divider">Or</div>
+        <Content display='flex' justifyContent='space-around'>
         <button className='button is-success' onClick={toggleRegModal}>Create New Account</button>
+        <button className='button is-success' onClick={demoLogin}>Login as Demo User</button>
+        </Content>
+        
         <div className={`modal ${regModal}`}>
             <div className="modal-background"></div>
                 <div className="modal-content">
@@ -168,6 +214,12 @@ function Login() {
                 </div>
             <button onClick={toggleRegModal} className="modal-close is-large" aria-label="close"></button>
         </div>
+                </Container>
+            
+            </Columns.Column>
+        </Columns>
+        </Box>
+        
     </div>
   )
 }

@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Posts from '../components/Posts'
 import { Block } from 'react-bulma-components'
+import Nav from '../components/Nav'
 
-function Board() {
+function Board(props) {
 
     const navigate = useNavigate()
     const postsURL = `${process.env.REACT_APP_API_URL}/posts/board`
@@ -15,6 +16,7 @@ function Board() {
     const [userId, setUserId] = useState()
 
     useEffect(() => {
+        
         const token = localStorage.getItem('palstalkToken')
         const userId = localStorage.getItem('palstalkUserId')
         //console.log(userId)
@@ -58,8 +60,9 @@ function Board() {
 
     return (
         <div>
-            <div></div><Block></Block>
+            <Nav/>
             
+            <Block></Block>
             <Posts posts={posts} userId={userId} token={token} updatePosts={updatePosts}/>
         </div>
     )

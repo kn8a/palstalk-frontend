@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Block, Columns, Image, Heading, Container, Tabs, Button, Box, } from 'react-bulma-components'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import Loader from '../components/Loader'
+import Nav from '../components/Nav'
 import UserFriendCard from '../components/userPageComponents/UserFriendCard'
 import UserPosts from '../components/userPageComponents/UserPosts'
 
@@ -14,6 +15,7 @@ function UserPage(props) {
     const token = localStorage.getItem('palstalkToken')
     const params = useParams()
     const userURL = `${process.env.REACT_APP_API_URL}/users/${params.userId}`
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         name_first: '',
         name_last:'',
@@ -21,6 +23,13 @@ function UserPage(props) {
     const [friend, setFried] = useState('')
     const [content,setContent] = useState(<Loader/>)
 
+    useEffect(()=>{
+        const token = localStorage.getItem('palstalkToken')
+
+        if (!token) {
+            navigate('/login')
+        }
+    }, [])
         
     useEffect(()=>{
         axios.get(userURL, {headers: {"Authorization": `Bearer ${token}`}})
@@ -72,6 +81,7 @@ function UserPage(props) {
         if (friend) {
             setContent(
                 <div>
+                    <Nav/>
                     <Block></Block>
 
                     <div className={`modal ${friendsModal}`}>
@@ -110,7 +120,8 @@ function UserPage(props) {
                         </Columns.Column>
                             
                     </Columns>
-                    <Tabs></Tabs>
+                    <div className='horLine'></div>
+                    <Block></Block>
                     <Container textAlign={'center'}><Heading subtitle size={5}>{`${user.name_first}'s posts`}</Heading></Container>
                     <Container>
                         <Block></Block>
@@ -125,6 +136,7 @@ function UserPage(props) {
             //console.log(friend)
             setContent(
                 <div>
+                    <Nav/>
                     <Block></Block>
                     <div className={`modal ${friendsModal}`}>
                         <div className="modal-background" onClick={toggleFriendsModal}></div>
@@ -161,7 +173,8 @@ function UserPage(props) {
                         </Columns.Column>
                             
                     </Columns>
-                    <Tabs></Tabs>
+                    <div className='horLine'></div>
+                    <Block></Block>
                     <Container display='flex' justifyContent='right'>
                     <Button onClick={sendFriendRequest} color={'info'} disabled={addFriendBtn}>Send friend request</Button>
                     </Container>

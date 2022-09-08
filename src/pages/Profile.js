@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { Heading, Button, Box,  Form, Block, Container, Image, Content, } from 'react-bulma-components'
 import MyProfilePosts from '../components/MyProfilePosts'
 import { FaUpload, FaCheck, FaUserEdit } from 'react-icons/fa'
+import Nav from '../components/Nav'
+import { useNavigate } from 'react-router-dom'
 
 
 function Profile(props) {
@@ -12,6 +14,7 @@ function Profile(props) {
   const token = localStorage.getItem('palstalkToken')
   const ProfileURL = `${process.env.REACT_APP_API_URL}/users/profile`
   const profileUpdateURL = `${process.env.REACT_APP_API_URL}/users/update`
+  const navigate = useNavigate()
 
   const [user,setUser] = useState({
     name_first: '',
@@ -46,11 +49,16 @@ function Profile(props) {
   const [editModal, setEditModal] = useState(null)
 
   useEffect(()=> {
+    const token = localStorage.getItem('palstalkToken')
+
+        if (!token) {
+            navigate('/login')
+        } else {
     axios.get(ProfileURL, {headers: {"Authorization": `Bearer ${token}`}})
     .then((response) => {
       setUser(response.data)
       setUserAsPulled(response.data)
-    })
+    })}
   },[])
 
   const toggleEditModal = () => {
@@ -171,6 +179,7 @@ const updatePosts = () => {
   
   return (
     <div>
+      <Nav/>
       <Block></Block>
  
     <Box>

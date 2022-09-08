@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Card, Media, Block, Content, Image, Heading,} from 'react-bulma-components'
+import { Card, Media, Block, Content, Image, Heading, Loader} from 'react-bulma-components'
 import { DateTime } from 'luxon'
 import axios from 'axios'
 import PostComments from './PostComments'
@@ -16,6 +16,7 @@ function Post(props) {
     const [post, setPost] = useState(props.post)
     const [like, setLike] = useState()
     const [commentsModal, setCommentsModal] = useState('')
+    
 
     //API URLS
     const postURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
@@ -42,6 +43,7 @@ function Post(props) {
 
     //like and switch like to unlike after click
     const likeFn = () => {
+        setLike(<Loader/>)
         axios.put(likeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
@@ -54,6 +56,7 @@ function Post(props) {
 
     //unlike and switch unlike to like after click
     const unlikeFn = () => {
+        setLike(<Loader/>)
         axios.put(unlikeURL, '', {headers: {"Authorization": `Bearer ${token}`}})
         .then(() => {
             axios.get(postURL, {headers: {"Authorization": `Bearer ${token}`}})
