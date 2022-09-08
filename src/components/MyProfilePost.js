@@ -5,6 +5,7 @@ import axios from 'axios'
 import PostComments from './PostComments'
 
 import {FaCommentAlt, FaThumbsDown, FaThumbsUp, FaEdit, FaTrash} from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 function MyProfilePost(props) {
     //Props
@@ -77,7 +78,7 @@ function MyProfilePost(props) {
         
     }
 
-    const [updateLoading,setUpdateLoading] = useState()
+    const [updateLoading,setUpdateLoading] = useState(false)
     const [editModal, setEditModal] = useState(null)
     const toggleEditModal = () => {
         if (!editModal) {
@@ -93,12 +94,19 @@ function MyProfilePost(props) {
     }
 
     const submitEdit = () => {
+        setUpdateLoading(true)
         const postUpdateURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
         axios.put(postUpdateURL, {content: postContent}, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response) => {
             updatePost()
             toggleEditModal()
+            setUpdateLoading(false)
         })
+        .catch((err)=>{
+            toast.error('Failed to submit edit. Please retry.')
+            setUpdateLoading(false)
+        })
+
     }
 
     const cancelEdit = () => {
@@ -108,12 +116,20 @@ function MyProfilePost(props) {
 
 
     //* delete post
+    const [deleteLoading, setDeleteLoading] = useState(false)
 
     const postDelete = () => {
+        setDeleteLoading(true)
         const deleteURL = `${process.env.REACT_APP_API_URL}/posts/${post._id}`
         axios.delete(deleteURL, {headers: {"Authorization": `Bearer ${token}`}})
         .then((response) => {
             updatePosts()
+            setDeleteLoading(false)
+            toggleDelModal()
+        })
+        .catch((err) => {
+            toast.error('Failed to delete. Please retry.')
+            setDeleteLoading(false)
         })
     }
 

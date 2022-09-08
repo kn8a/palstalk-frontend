@@ -137,14 +137,14 @@ function Login(props) {
   return (
     <div className='login-main'>
         <Block></Block>
-        
+        <div className='spacer-div'></div>
         <Box>
         <Columns>
             <Columns.Column>
                 <Container display='flex' justifyContent='center' alignItems='center'>
                     <Container display='flex' flexDirection='column' justifyContent='center' textAlign={'center'}>
                         <div className='login-large-logo'>sweetnook</div>
-                        <p>Where friends meet and share.</p>
+                        <p>Where sweet friends meet and share.</p>
                     </Container>
                 </Container>
             </Columns.Column>
@@ -152,9 +152,15 @@ function Login(props) {
             <Columns.Column>
                 <Container display='flex' flexDirection='column'>
                 <form onSubmit={login}>
+                    <Block></Block>
             <input className="input" required onChange={onChange} value={credentials.email} name='email' type="email" placeholder="example@email.com"/>
+            <Block></Block>
             <input className="input" required onChange={onChange} value={credentials.password} name='password' type="password" placeholder="*********"/>
+            <Block></Block>
+            <Content display='flex' justifyContent='center'>
             <button className={`button is-info ${loginBtnState}`}>Login</button>
+            </Content>
+            
         </form>
         <div className="divider">Or</div>
         <Content display='flex' justifyContent='space-around'>
