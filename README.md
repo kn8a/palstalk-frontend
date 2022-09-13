@@ -1,5 +1,5 @@
 # sweetnook - frontend ([backend API](https://github.com/kn8a/sweetnook-api))
-[My Skills](https://skills.thijs.gg/icons?i=js,react,css,html)
+![My Skills](https://skills.thijs.gg/icons?i=js,react,css,html)
 
 Basic Facebook-like Social Media app
 
@@ -23,7 +23,7 @@ Live preview: [kn8a.github.io/sweetnook/](https://kn8a.github.io/sweetnook/ "htt
 -   Home page shows newsfeed of your and your friend's recent posts
 -   Profile page shows your own posts and friends list
 
-## Built with: !
+## Built with:
 
  - React
  - React Bulma Components
