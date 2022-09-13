@@ -30,4 +30,5 @@ Live preview: [kn8a.github.io/sweetnook/](https://kn8a.github.io/sweetnook/ "htt
  - React Toastify
  - Luxon
  - Axios
+ 
 ![My Skills](https://skills.thijs.gg/icons?i=js,react,css,html)
