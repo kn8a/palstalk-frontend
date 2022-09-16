@@ -191,7 +191,7 @@ function Profile(props) {
       .get(postsURL, { headers: { Authorization: `Bearer ${token}` } })
       .then((response) => {
         setPosts(response.data)
-        console.log(response.data)
+        //console.log(response.data)
       })
       .catch((err) => {
         console.log(err)

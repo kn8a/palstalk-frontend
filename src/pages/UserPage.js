@@ -44,7 +44,7 @@ function UserPage(props) {
       .then((response) => {
         setUser(response.data.user)
         setFried(response.data.friend)
-        console.log(response.data.user)
+        //console.log(response.data.user)
       })
   }, [params])
 

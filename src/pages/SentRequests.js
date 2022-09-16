@@ -23,7 +23,7 @@ function SentRequests() {
         .get(sentURL, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           setRequests(response.data)
-          console.log(response.data)
+          //console.log(response.data)
         })
     }
   }, [])
