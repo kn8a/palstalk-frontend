@@ -109,6 +109,10 @@ function Profile(props) {
             setUserAsPulled(response.data)
             setUpdateLoading(false)
             toggleEditModal()
+            localStorage.setItem(
+              "palstalkUserName",
+              `${user.name_first} ${user.name_last}`
+            )
           })
       })
   }

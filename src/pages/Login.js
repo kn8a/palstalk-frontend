@@ -10,6 +10,8 @@ import {
   Content,
   Form,
   Box,
+  Heading,
+  Button,
 } from "react-bulma-components"
 
 function Login(props) {
@@ -140,6 +142,15 @@ function Login(props) {
       setRegModal("is-active")
     } else {
       setRegModal(null)
+    }
+  }
+
+  const [TOSModal, setTOSModal] = useState(null)
+  const toggleTOSModal = () => {
+    if (!TOSModal) {
+      setTOSModal("is-active")
+    } else {
+      setTOSModal(null)
     }
   }
 
@@ -303,8 +314,9 @@ function Login(props) {
                     </Form.Field>
                     <Form.Field>
                       <Form.Control>
-                        <input required type='checkbox' />
-                        {` `}I agree to the <a href='#'>terms and conditions</a>
+                        <input className='agree' required type='checkbox' />
+                        {` `}I agree to the{" "}
+                        <a onClick={toggleTOSModal}>terms and conditions</a>
                       </Form.Control>
                     </Form.Field>
                     <Form.Control>
@@ -324,6 +336,33 @@ function Login(props) {
           </Columns.Column>
         </Columns>
       </Box>
+      <div className={`modal ${TOSModal}`}>
+        <div className='modal-background' onClick={toggleTOSModal}></div>
+        <div className='modal-content'>
+          <Content>
+            <Box>
+              <Heading size={5} textAlign='center'>
+                Terms and conditions:
+              </Heading>
+              <Block></Block>
+              <Heading subtitle size={6} textAlign={"center"}>
+                1. Be a decent person.
+              </Heading>
+              <Block></Block>
+              <Container display='flex' justifyContent='center'>
+                <Button color={"success"} onClick={toggleTOSModal}>
+                  Ok
+                </Button>
+              </Container>
+            </Box>
+          </Content>
+        </div>
+        <button
+          onClick={toggleTOSModal}
+          className='modal-close is-large'
+          aria-label='close'
+        ></button>
+      </div>
     </div>
   )
 }
