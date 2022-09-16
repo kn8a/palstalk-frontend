@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react"
 
 function RegNav() {
-  return (
-    <div>RegNav</div>
-  )
+	return <div>RegNav</div>
 }
 
 export default RegNav
