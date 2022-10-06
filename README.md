@@ -9,7 +9,7 @@ Live preview: [kn8a.github.io/sweetnook/](https://kn8a.github.io/sweetnook/ "htt
 ## **Features:**
 
 -   Sign-up / log-in / login as demo user
--  JWT authentication
+-   JWT authentication
 -   Send/cancel friend requests 
 - Accept/decline friend requests from other users
 -   Make text-only posts
