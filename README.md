@@ -1,4 +1,4 @@
-# sweetnook - frontend ([backend API](https://github.com/kn8a/sweetnook-api))
+# sweetnook - frontend [[Go to backend API](https://github.com/kn8a/sweetnook-api)]
 
 Basic Facebook-like Social Media app
 
