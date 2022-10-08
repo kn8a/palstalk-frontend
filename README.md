@@ -32,3 +32,10 @@ Live preview: [kn8a.github.io/sweetnook/](https://kn8a.github.io/sweetnook/ "htt
  - Axios
  
 ![My Skills](https://skills.thijs.gg/icons?i=js,react,css,html)
+
+## How to use:
+
+1. Clone this repository.
+2.  Installation:  `npm install`
+3.  In the project directory, run:  `npm start`
+4. Open  [http://localhost:3000](http://localhost:3000/)  to view it in the browser. The page will reload if you make edits.
