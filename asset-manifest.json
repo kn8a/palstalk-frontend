@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/sweetnook/static/css/main.3ad91b6d.css",
-    "main.js": "/sweetnook/static/js/main.a8a8645a.js",
+    "main.js": "/sweetnook/static/js/main.5ca8f3d5.js",
     "static/media/logo.svg": "/sweetnook/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/sweetnook/index.html",
     "main.3ad91b6d.css.map": "/sweetnook/static/css/main.3ad91b6d.css.map",
-    "main.a8a8645a.js.map": "/sweetnook/static/js/main.a8a8645a.js.map"
+    "main.5ca8f3d5.js.map": "/sweetnook/static/js/main.5ca8f3d5.js.map"
   },
   "entrypoints": [
     "static/css/main.3ad91b6d.css",
-    "static/js/main.a8a8645a.js"
+    "static/js/main.5ca8f3d5.js"
   ]
 }
